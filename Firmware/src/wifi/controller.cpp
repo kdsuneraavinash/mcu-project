@@ -3,6 +3,8 @@
 #include <HTTPClient.h>
 #include <WiFi.h>
 
+#define REMOTE_SERVER "http://74d58840cfd1.ngrok.io/"
+
 void initializeConnection() {
   WiFi.begin(SSID, PASSWORD);
   Serial.print("Trying to connect to WiFi...");
@@ -14,15 +16,14 @@ void initializeConnection() {
   Serial.println("\nWiFi connected with IP: " + WiFi.localIP().toString());
 }
 
-void sendSensorData() {
+void sendSensorData(char* message) {
   if (WiFi.status() == WL_CONNECTED) {
     HTTPClient http;
-    http.begin("http://46.101.157.247/");
-    int httpResponseCode = http.GET();
+    http.begin(REMOTE_SERVER);
+    int httpResponseCode = http.POST(message);
 
     if (httpResponseCode > 0) {
       String response = http.getString();
-      Serial.println(httpResponseCode);
       Serial.println(response);
     } else {
       const char* errorMessage = http.errorToString(httpResponseCode).c_str();
