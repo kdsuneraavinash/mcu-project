@@ -8,7 +8,7 @@ float mean(float* buffer, int size) {
   return sum / size;
 }
 
-float standard_dev(float* buffer, int size, float mean) {
+float standardDeviation(float* buffer, int size, float mean) {
   float std = 0.0;
   for (int i = 0; i < size; i++) {
     std += pow(buffer[i] - mean, 2);

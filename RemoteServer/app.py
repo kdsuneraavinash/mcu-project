@@ -3,8 +3,10 @@ from flask import request
 from capparselib.parsers import CAPParser
 from flask import render_template
 
+from db import database, entry
 
 app = Flask(__name__)
+database.init_app(app)
 
 
 @app.route('/', methods=["POST"])
@@ -16,13 +18,14 @@ def get_update():
         name = param['valueName']
         value = param['value']
         params[name] = value
-    print(params)
+    entry.save_entry(alert, params)
     return "200 - ACK"
 
 
 @app.route('/', methods=["GET"])
 def view():
-    return render_template('index.html')
+    entries = entry.get_all_entries()
+    return render_template('index.html', entries=entries)
 
 
 if __name__ == '__main__':

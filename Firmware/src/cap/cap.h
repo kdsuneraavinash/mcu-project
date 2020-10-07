@@ -1,4 +1,5 @@
-#include "sensor.h"
+#include "statistic.h"
 
-void generateCap(char* buffer, int buffer_size, sensor temp, sensor humidity,
-                 sensor pressure, sensor light);
+void generateCap(char* buffer, int buffer_size, statistic temp,
+                 statistic humidity, statistic pressure, statistic light);
+void setupIdentifier();

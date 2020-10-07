@@ -4,50 +4,62 @@
 #include "sensor/sensor.h"
 #include "utils.h"
 #include "wifi/controller.h"
+#include "wifi/ntp.h"
 
-#define CAP_SIZE 1500
-#define SAMPLE_BUFFER 30
-#define TOTAL_DELAY (60 * 1000)
-#define DELAY_TIME (TOTAL_DELAY / (SAMPLE_BUFFER))
+#define CAP_SIZE 3000
+#define N_SAMPLES 5
+#define SYNC_PERIOD (30 * 1000)
+#define SAMPLE_PERIOD (SYNC_PERIOD / (N_SAMPLES))
+#define REMOTE_SERVER "http://7e86ccb1d82f.ngrok.io/"
 
-float temp_arr[SAMPLE_BUFFER];
-float humiditity_arr[SAMPLE_BUFFER];
-float pressure_arr[SAMPLE_BUFFER];
-float light_arr[SAMPLE_BUFFER];
-int sample_index = 0;
+float tempSamples[N_SAMPLES];
+float humiditySamples[N_SAMPLES];
+float pressureSamples[N_SAMPLES];
+float lightSamples[N_SAMPLES];
+int currentSample = 0;
+unsigned long lastSampleMillis;
 
-sensor toSensorValue(float* buffer) {
-  float sensor_mean = mean(buffer, SAMPLE_BUFFER);
-  float sensor_std = standard_dev(buffer, SAMPLE_BUFFER, sensor_mean);
-  return {sensor_mean, sensor_std};
+statistic toStatistic(float* buffer) {
+  float sensorMean = mean(buffer, N_SAMPLES);
+  float sensorStd = standardDeviation(buffer, N_SAMPLES, sensorMean);
+  return {sensorMean, sensorStd};
 }
 
 void setup() {
   pinMode(LED_BUILTIN, OUTPUT);
   Serial.begin(115200);
   initializeConnection();
+  initializeNtp();
+  setupIdentifier();
 }
 
 void loop() {
-  if (sample_index == SAMPLE_BUFFER) {
+  if (millis() - lastSampleMillis < SAMPLE_PERIOD) {
+    return;
+  }
+
+  lastSampleMillis = millis();
+  if (currentSample == N_SAMPLES) {
+    Serial.println("[MAIN] Starting server sync...");
     char cap[CAP_SIZE];
-    sensor temp = toSensorValue(temp_arr);
-    sensor humidity = toSensorValue(humiditity_arr);
-    sensor pressure = toSensorValue(pressure_arr);
-    sensor light = toSensorValue(light_arr);
+    statistic temp = toStatistic(tempSamples);
+    statistic humidity = toStatistic(humiditySamples);
+    statistic pressure = toStatistic(pressureSamples);
+    statistic light = toStatistic(lightSamples);
     generateCap(cap, CAP_SIZE, temp, humidity, pressure, light);
-    sendSensorData(cap);
-    sample_index = 0;
+    char serverAddress[] = REMOTE_SERVER;
+    sendPostRequest(cap, serverAddress);
+    currentSample = 0;
   } else {
+    Serial.println("[MAIN] Starting sensor sync...");
     float temp = sampleTemperature();
     float humidity = sampleHumidity();
     float pressure = samplePressure();
     float light = sampleLight();
-    temp_arr[sample_index] = temp;
-    humiditity_arr[sample_index] = humidity;
-    pressure_arr[sample_index] = pressure;
-    light_arr[sample_index] = light;
-    sample_index++;
+    tempSamples[currentSample] = temp;
+    humiditySamples[currentSample] = humidity;
+    pressureSamples[currentSample] = pressure;
+    lightSamples[currentSample] = light;
+    currentSample++;
   }
-  delay(DELAY_TIME);
 }

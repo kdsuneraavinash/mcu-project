@@ -1,4 +1,4 @@
-struct sensor {
+struct statistic {
   float mean;
   float std;
 };
