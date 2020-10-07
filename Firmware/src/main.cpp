@@ -1,4 +1,5 @@
 #include <Arduino.h>
+#include <cppQueue.h>
 
 #include "cap/cap.h"
 #include "sensor/sensor.h"
@@ -8,9 +9,11 @@
 
 #define CAP_SIZE 3000
 #define N_SAMPLES 5
+#define CACHE_SIZE 10
+#define REMOTE_SERVER "http://7e86ccb1d82f.ngrok.io/"
+
 #define SYNC_PERIOD (30 * 1000)
 #define SAMPLE_PERIOD (SYNC_PERIOD / (N_SAMPLES))
-#define REMOTE_SERVER "http://7e86ccb1d82f.ngrok.io/"
 
 float tempSamples[N_SAMPLES];
 float humiditySamples[N_SAMPLES];
@@ -18,6 +21,7 @@ float pressureSamples[N_SAMPLES];
 float lightSamples[N_SAMPLES];
 int currentSample = 0;
 unsigned long lastSampleMillis;
+Queue capQueue(CAP_SIZE, CACHE_SIZE);
 
 statistic toStatistic(float* buffer) {
   float sensorMean = mean(buffer, N_SAMPLES);
@@ -47,8 +51,13 @@ void loop() {
     statistic pressure = toStatistic(pressureSamples);
     statistic light = toStatistic(lightSamples);
     generateCap(cap, CAP_SIZE, temp, humidity, pressure, light);
+    if (capQueue.isFull()) {
+      Serial.println("[CACHE] CAP cache full, discarding oldest entry.");
+      capQueue.drop();
+    }
+    capQueue.push(cap);
     char serverAddress[] = REMOTE_SERVER;
-    sendPostRequest(cap, serverAddress);
+    processCapQueue(&capQueue, CAP_SIZE, serverAddress);
     currentSample = 0;
   } else {
     Serial.println("[MAIN] Starting sensor sync...");

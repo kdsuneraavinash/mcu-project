@@ -12,44 +12,46 @@
     <title>Hello, world!</title>
 </head>
 <body>
-<table class="table">
-    <thead>
-    <tr>
-        <th scope="col" rowspan="2">Identifier</th>
-        <th scope="col" rowspan="2">Timestamp</th>
-        <th scope="col" colspan="2">Temperature (°C)</th>
-        <th scope="col" colspan="2">Humidity</th>
-        <th scope="col" colspan="2">Pressure (Pa)</th>
-        <th scope="col" colspan="2">Light Intensity</th>
-    </tr>
-    <tr>
-        <th scope="col">Mean</th>
-        <th scope="col">Std</th>
-        <th scope="col">Mean</th>
-        <th scope="col">Std</th>
-        <th scope="col">Mean</th>
-        <th scope="col">Std</th>
-        <th scope="col">Mean</th>
-        <th scope="col">Std</th>
-    </tr>
-    </thead>
-    <tbody>
-    {% for entry in entries %}
-    <tr>
-        <td>{{ entry['identifier'] }}</td>
-        <td>{{ entry['sent'] }}</td>
-        <td>{{ entry['info_parameter_temp_mean'] }}</td>
-        <td>{{ entry['info_parameter_temp_std'] }}</td>
-        <td>{{ entry['info_parameter_humidity_mean'] }}</td>
-        <td>{{ entry['info_parameter_humidity_std'] }}</td>
-        <td>{{ entry['info_parameter_pressure_mean'] }}</td>
-        <td>{{ entry['info_parameter_pressure_std'] }}</td>
-        <td>{{ entry['info_parameter_light_mean'] }}</td>
-        <td>{{ entry['info_parameter_light_std'] }}</td>
-    </tr>
-    {% endfor %}
-    </tbody>
-</table>
+<div class="container">
+    <table class="table table-sm">
+        <thead>
+        <tr>
+            <th scope="col" rowspan="2">Identifier</th>
+            <th scope="col" rowspan="2">Timestamp</th>
+            <th scope="col" colspan="2">Temperature (°C)</th>
+            <th scope="col" colspan="2">Humidity</th>
+            <th scope="col" colspan="2">Pressure (Pa)</th>
+            <th scope="col" colspan="2">Light Intensity</th>
+        </tr>
+        <tr>
+            <th scope="col">Mean</th>
+            <th scope="col">Std</th>
+            <th scope="col">Mean</th>
+            <th scope="col">Std</th>
+            <th scope="col">Mean</th>
+            <th scope="col">Std</th>
+            <th scope="col">Mean</th>
+            <th scope="col">Std</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for entry in entries %}
+            <tr>
+                <td>{{ entry['identifier'] }}</td>
+                <td>{{ entry['sent'] }}</td>
+                <td>{{ entry['info_parameter_temp_mean'] }}</td>
+                <td>{{ entry['info_parameter_temp_std'] }}</td>
+                <td>{{ entry['info_parameter_humidity_mean'] }}</td>
+                <td>{{ entry['info_parameter_humidity_std'] }}</td>
+                <td>{{ entry['info_parameter_pressure_mean'] }}</td>
+                <td>{{ entry['info_parameter_pressure_std'] }}</td>
+                <td>{{ entry['info_parameter_light_mean'] }}</td>
+                <td>{{ entry['info_parameter_light_std'] }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->

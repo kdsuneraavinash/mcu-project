@@ -5,7 +5,7 @@
 #include "../wifi/ntp.h"
 #include "statistic.h"
 
-#define IDENTIFIER_LENGTH 8
+#define IDENTIFIER_LENGTH 32
 
 const char* CAP_TEMPLATE =
     "<?xml version = \"1.0\" encoding = \"UTF-8\"?>"
@@ -63,6 +63,7 @@ int currentIdentifier = 0;
 char randomIdentifier[IDENTIFIER_LENGTH + 1];
 
 void setupIdentifier() {
+  randomSeed(analogRead(0));
   for (int i = 0; i < IDENTIFIER_LENGTH; i++) {
     byte randomValue = random(0, 26);
     randomIdentifier[i] = randomValue + 'a';

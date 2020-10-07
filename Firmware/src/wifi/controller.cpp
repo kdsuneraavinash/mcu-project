@@ -2,6 +2,9 @@
 
 #include <HTTPClient.h>
 #include <WiFi.h>
+#include <cppQueue.h>
+
+#include "../cap/cap.h"
 
 /**
  * Initializing wifi connection.
@@ -26,7 +29,7 @@ void initializeConnection() {
  * */
 bool sendPostRequest(char* message, char* endpoint) {
   if (WiFi.status() != WL_CONNECTED) {
-    Serial.println("[WIFI] Not connected to a network. Please restart device.");
+    Serial.println("[WIFI] Not connected to a network.");
     return false;
   }
 
@@ -55,4 +58,19 @@ bool sendPostRequest(char* message, char* endpoint) {
   // Success
   Serial.println("[WIFI] Data sent to the server.");
   return true;
+}
+
+void processCapQueue(Queue* capCache, int capSize, char* endpoint) {
+  int queueLength = capCache->getCount();
+  for (int i = 0; i < queueLength; i++) {
+    Serial.printf("[CACHE] retrieved oldest CAP. %d remaining.\n",
+                  queueLength - i - 1);
+    char cap[capSize];
+    capCache->pop(cap);
+    bool success = sendPostRequest(cap, endpoint);
+    if (!success) {
+      Serial.println("[CACHE] Request failed. Readding to cache.");
+      capCache->push(cap);
+    }
+  }
 }
