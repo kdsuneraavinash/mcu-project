@@ -1,8 +1,10 @@
 #include <Arduino.h>
 
-float sampleTemperature() { return 100 + (random(10) * 2 - 5); }
+#include "dht.h"
 
-float sampleHumidity() { return 200 + (random(10) * 2 - 5); }
+float sampleTemperature() { return readTemperature(); }
+
+float sampleHumidity() { return readHumidity(); }
 
 float samplePressure() { return 300 + (random(10) * 2 - 5); }
 

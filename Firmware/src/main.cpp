@@ -2,6 +2,7 @@
 #include <cppQueue.h>
 
 #include "cap/cap.h"
+#include "sensor/dht.h"
 #include "sensor/sensor.h"
 #include "utils.h"
 #include "wifi/controller.h"
@@ -35,6 +36,7 @@ void setup() {
   initializeConnection();
   initializeNtp();
   setupIdentifier();
+  initializeDHT();
 }
 
 void loop() {
