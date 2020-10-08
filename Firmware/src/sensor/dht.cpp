@@ -7,20 +7,16 @@
 
 DHT dht(DHTPIN, DHTTYPE);
 
-float lastTemperature = 0;
-float lastHumidity = 0;
-
 void initializeDHT() { dht.begin(); }
 
 float readHumidity() {
   float humidity = dht.readHumidity();
   if (isnan(humidity)) {
     Serial.println("[DHT] Failed to read humidity from DHT sensor.");
-    return lastHumidity;
+    return -1;
   }
 
   Serial.printf("[DHT] Humidity read: %f\n", humidity);
-  lastHumidity = humidity;
   return humidity;
 }
 
@@ -28,10 +24,9 @@ float readTemperature() {
   float temperature = dht.readTemperature();
   if (isnan(temperature)) {
     Serial.println("[DHT] Failed to read temperature from DHT sensor.");
-    return lastTemperature;
+    return -1;
   }
 
   Serial.printf("[DHT] Temperature read: %f\n", temperature);
-  lastTemperature = temperature;
   return temperature;
 }

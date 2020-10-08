@@ -2,6 +2,7 @@
 #include <cppQueue.h>
 
 #include "cap/cap.h"
+#include "sensor/bmp180.h"
 #include "sensor/dht.h"
 #include "sensor/sensor.h"
 #include "utils.h"
@@ -24,6 +25,19 @@ int currentSample = 0;
 unsigned long lastSampleMillis;
 Queue capQueue(CAP_SIZE, CACHE_SIZE);
 
+void clearSample(float* buffer) {
+  for (int i = 0; i < N_SAMPLES; i++) {
+    buffer[i] = NULL;
+  }
+}
+
+void clearSamples() {
+  clearSample(tempSamples);
+  clearSample(humiditySamples);
+  clearSample(pressureSamples);
+  clearSample(lightSamples);
+}
+
 statistic toStatistic(float* buffer) {
   float sensorMean = mean(buffer, N_SAMPLES);
   float sensorStd = standardDeviation(buffer, N_SAMPLES, sensorMean);
@@ -37,6 +51,8 @@ void setup() {
   initializeNtp();
   setupIdentifier();
   initializeDHT();
+  initializeBMP();
+  clearSamples();
 }
 
 void loop() {
@@ -61,6 +77,7 @@ void loop() {
     char serverAddress[] = REMOTE_SERVER;
     processCapQueue(&capQueue, CAP_SIZE, serverAddress);
     currentSample = 0;
+    clearSamples();
   } else {
     Serial.println("[MAIN] Starting sensor sync...");
     float temp = sampleTemperature();
