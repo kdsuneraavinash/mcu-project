@@ -7,7 +7,8 @@
 \BOOKMARK [2][-]{subsection.2.3}{Schematic Diagram}{section.2}% 7
 \BOOKMARK [1][-]{section.3}{Implementation}{}% 8
 \BOOKMARK [2][-]{subsection.3.1}{Fault Recovery Implementation}{section.3}% 9
-\BOOKMARK [2][-]{subsection.3.2}{Algorithm}{section.3}% 10
-\BOOKMARK [1][-]{section.4}{Annexure}{}% 11
-\BOOKMARK [2][-]{subsection.4.1}{Server Source Code}{section.4}% 12
-\BOOKMARK [2][-]{subsection.4.2}{Device Source Code}{section.4}% 13
+\BOOKMARK [2][-]{subsection.3.2}{Prototype Implementation}{section.3}% 10
+\BOOKMARK [2][-]{subsection.3.3}{Algorithm}{section.3}% 11
+\BOOKMARK [1][-]{section.4}{Annexure}{}% 12
+\BOOKMARK [2][-]{subsection.4.1}{Remote Server Source Code}{section.4}% 13
+\BOOKMARK [2][-]{subsection.4.2}{Firmware Source Code}{section.4}% 14

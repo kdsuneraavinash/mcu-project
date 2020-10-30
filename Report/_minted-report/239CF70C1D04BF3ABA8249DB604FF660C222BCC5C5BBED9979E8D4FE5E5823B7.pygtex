@@ -1,0 +1,15 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+cp}{\PYGZsh{}include} \PYG{c+cpf}{\PYGZlt{}Arduino.h\PYGZgt{}}
+
+\PYG{c+cp}{\PYGZsh{}include} \PYG{c+cpf}{\PYGZdq{}bmp180.h\PYGZdq{}}
+\PYG{c+cp}{\PYGZsh{}include} \PYG{c+cpf}{\PYGZdq{}dht.h\PYGZdq{}}
+\PYG{c+cp}{\PYGZsh{}include} \PYG{c+cpf}{\PYGZdq{}ldr.h\PYGZdq{}}
+
+\PYG{k+kt}{float} \PYG{n+nf}{sampleTemperature}\PYG{p}{()} \PYG{p}{\PYGZob{}} \PYG{k}{return} \PYG{n}{readTemperature}\PYG{p}{();} \PYG{p}{\PYGZcb{}}
+
+\PYG{k+kt}{float} \PYG{n+nf}{sampleHumidity}\PYG{p}{()} \PYG{p}{\PYGZob{}} \PYG{k}{return} \PYG{n}{readHumidity}\PYG{p}{();} \PYG{p}{\PYGZcb{}}
+
+\PYG{k+kt}{float} \PYG{n+nf}{samplePressure}\PYG{p}{()} \PYG{p}{\PYGZob{}} \PYG{k}{return} \PYG{n}{readPressure}\PYG{p}{();} \PYG{p}{\PYGZcb{}}
+
+\PYG{k+kt}{float} \PYG{n+nf}{sampleLight}\PYG{p}{()} \PYG{p}{\PYGZob{}} \PYG{k}{return} \PYG{n}{readLightIntensity}\PYG{p}{();} \PYG{p}{\PYGZcb{}}
+\end{Verbatim}

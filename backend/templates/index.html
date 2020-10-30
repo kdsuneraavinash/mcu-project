@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en">
+
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -7,62 +8,104 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
-    <title>Hello, world!</title>
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="//cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" type="text/css"
+        href="https://cdn.datatables.net/v/bs4/dt-1.10.22/fh-3.1.7/kt-2.5.3/r-2.2.6/sc-2.0.3/sp-1.2.1/datatables.min.css" />
+    <title>Environment Monitor System</title>
 </head>
-<body>
-<div class="container">
-    <table class="table table-sm">
-        <thead>
-        <tr>
-            <th scope="col" rowspan="2">Identifier</th>
-            <th scope="col" rowspan="2">Timestamp</th>
-            <th scope="col" colspan="2">Temperature (°C)</th>
-            <th scope="col" colspan="2">Humidity</th>
-            <th scope="col" colspan="2">Pressure (Pa)</th>
-            <th scope="col" colspan="2">Light Intensity</th>
-        </tr>
-        <tr>
-            <th scope="col">Mean</th>
-            <th scope="col">Std</th>
-            <th scope="col">Mean</th>
-            <th scope="col">Std</th>
-            <th scope="col">Mean</th>
-            <th scope="col">Std</th>
-            <th scope="col">Mean</th>
-            <th scope="col">Std</th>
-        </tr>
-        </thead>
-        <tbody>
-        {% for entry in entries %}
-            <tr>
-                <td>{{ entry['identifier'] }}</td>
-                <td>{{ entry['sent'] }}</td>
-                <td>{{ entry['info_parameter_temp_mean'] }}</td>
-                <td>{{ entry['info_parameter_temp_std'] }}</td>
-                <td>{{ entry['info_parameter_humidity_mean'] }}</td>
-                <td>{{ entry['info_parameter_humidity_std'] }}</td>
-                <td>{{ entry['info_parameter_pressure_mean'] }}</td>
-                <td>{{ entry['info_parameter_pressure_std'] }}</td>
-                <td>{{ entry['info_parameter_light_mean'] }}</td>
-                <td>{{ entry['info_parameter_light_std'] }}</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-</div>
 
-<!-- Optional JavaScript -->
-<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+<body style="background: url(https://w.wallhaven.cc/full/x1/wallhaven-x1g16l.png); background-size: cover;">
+    <nav class="navbar navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">Environment Monitor System</a>
+        <span class="navbar-text">
+            CS3242
+        </span>
+    </nav>
+
+
+    <div class="container p-5">
+        <div class="card p-4">
+            <table class="table table-sm" id="table">
+                <thead>
+                    <tr>
+                        <th scope="col" rowspan="2">#</th>
+                        <th scope="col" rowspan="2">Timestamp</th>
+                        <th scope="col" colspan="2">Temperature (°C)</th>
+                        <th scope="col" colspan="2">Humidity</th>
+                        <th scope="col" colspan="2">Pressure (Pa)</th>
+                        <th scope="col" colspan="2">Light Intensity</th>
+                    </tr>
+                    <tr>
+                        <th scope="col">Mean</th>
+                        <th scope="col">Std</th>
+                        <th scope="col">Mean</th>
+                        <th scope="col">Std</th>
+                        <th scope="col">Mean</th>
+                        <th scope="col">Std</th>
+                        <th scope="col">Mean</th>
+                        <th scope="col">Std</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for entry in entries %}
+                    <tr>
+                        <td>
+                            <span data-toggle="tooltip" data-placement="left" title="ID: {{ entry['identifier'] }}">
+                                {{loop.index}}
+                            </span>
+                        </td>
+                        <td> {{ entry['sent'] }} </td>
+                        <td>{{ entry['info_parameter_temp_mean'] }}</td>
+                        <td>{{ entry['info_parameter_temp_std'] }}</td>
+                        <td>{{ entry['info_parameter_humidity_mean'] }}</td>
+                        <td>{{ entry['info_parameter_humidity_std'] }}</td>
+                        <td>{{ entry['info_parameter_pressure_mean'] }}</td>
+                        <td>{{ entry['info_parameter_pressure_std'] }}</td>
+                        <td>{{ entry['info_parameter_light_mean'] }}</td>
+                        <td>{{ entry['info_parameter_light_std'] }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
         crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
         integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
         crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
+
+    <script type="text/javascript"
+        src="https://cdn.datatables.net/v/bs4/dt-1.10.22/fh-3.1.7/kt-2.5.3/r-2.2.6/sc-2.0.3/sp-1.2.1/datatables.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"
+        integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ=="
+        crossorigin="anonymous"></script>
+    <script src="//cdn.datatables.net/plug-ins/1.10.21/dataRender/datetime.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#table').DataTable({
+                responsive: true,
+                columnDefs: [
+                    {
+                        targets: [1],
+                        render: $.fn.dataTable.render.moment('YYYY-MM-DD HH:mm:ssZ', 'MMM Do YYYY hh:mm a')
+                    }
+                ],
+            });
+        });
+
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
+    </script>
 </body>
+
 </html>

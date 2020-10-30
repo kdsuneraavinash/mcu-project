@@ -1,0 +1,8 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+cp}{\PYGZsh{}ifndef LDR\PYGZus{}H}
+\PYG{c+cp}{\PYGZsh{}define LDR\PYGZus{}H}
+
+\PYG{k+kt}{float} \PYG{n+nf}{readLightIntensity}\PYG{p}{();}
+
+\PYG{c+cp}{\PYGZsh{}endif}
+\end{Verbatim}

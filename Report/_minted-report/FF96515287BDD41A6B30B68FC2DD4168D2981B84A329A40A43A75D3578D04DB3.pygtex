@@ -1,0 +1,7 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+cp}{\PYGZsh{}include} \PYG{c+cpf}{\PYGZlt{}Arduino.h\PYGZgt{}}
+
+\PYG{c+cp}{\PYGZsh{}define LDRPIN 4}
+
+\PYG{k+kt}{float} \PYG{n+nf}{readLightIntensity}\PYG{p}{()} \PYG{p}{\PYGZob{}} \PYG{k}{return} \PYG{n}{analogRead}\PYG{p}{(}\PYG{n}{LDRPIN}\PYG{p}{);} \PYG{p}{\PYGZcb{}}
+\end{Verbatim}

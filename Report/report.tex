@@ -194,7 +194,7 @@ Apart form that, for the sensors, following sensors were chosen. \par
     \label{fig:layers}
 \end{figure}
 
-\noindent Cost breakdown for the device excluding connectors, vero-boards, etc... is given below.
+\noindent Cost breakdown for the device excluding connectors, resistors, bread-boards, etc... is given below.
 
 \vspace{3mm}
 
@@ -242,12 +242,6 @@ So, ESP-32S was used.
     \caption{Schematic PCB view of the prototype}
 \end{figure}
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=\textwidth]{./images/breadboard.png}
-    \caption{Breadboard view of the prototype}
-\end{figure}
-
 \newpage
 
 % ======================================
@@ -257,6 +251,69 @@ So, ESP-32S was used.
 \section{Implementation}
 
 \subsection{Fault Recovery Implementation}
+
+A simple queuing mechanism was used to mitigate the issue of unstable connectivity.
+The firmware would first add the CAP records to the queue and then, when sending the data,
+all the content in the queue will be sent.
+In case some packet sending failed, (either because of no connectivity or server not being available)
+the response from the server would fail or have an error status code.
+In this case, that CAP record would again be added to the queue.
+The queue would contain a bound so as to stop all the old records from being
+on the memory and leading to a risk of memory overflow. Because of this bound, and
+the implementation of the queue, once the connectivity continues, the most recent
+records will be sent out to  the server.
+
+Apart from queueing messages, the NodeMCU ESP32S contains an independently controlled
+WiFi module which connects to the network even when it is disconnected. So, the module
+will reconnect to the network in the case it was disconnected from the server due to
+some reason.
+
+\subsection{Prototype Implementation}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{./images/breadboard.png}
+    \caption{Prototype Implementation Design - Breadboard View}
+\end{figure}
+
+\begin{minipage}{0.45\linewidth}
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=\textwidth]{./images/device.jpg}
+        \caption{Prototype Device}
+    \end{figure}
+\end{minipage}\hfil
+\begin{minipage}{0.4\linewidth}
+    As per the device implementation, I was able to connect the device as denoted in the
+    above breadboard view and test it. However, due to some constraints  I was not able  to
+    connect it to a dot-board or something similar.
+
+    Furthermore, because of an issue with uploading to the microcontroller,
+    I had to attach a capacitor to the EN pin. (Otherwise it would randomly fail)
+\end{minipage}
+\vspace{20pt}
+
+As mentioned in the overview, the remote server part of the system was implemented using flask.
+The database used for the prototype was a simple SQLite database.
+Web interface of the prototype consisted of a simple table containing all the
+sensor data that was received along with the timestamp that the data was recorded by the MCU.
+Following is a screenshot of this web application dashboard.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{./images/browser.png}
+    \caption{Prototype Dashboard Screenshot}
+\end{figure}
+
+For the CAP implementation, CAP on the device side was done manually. (without any explicit libraries dedicated for CAP)
+However, some caveats were used to send the required fields in the CAP XML request.
+
+For the \textbf{timestamp field}, a NTP library was used. This would fetch the current time from a remote server.
+For the \textbf{identifier field}, the device would first generate a random string of 32 characters.
+This will be seeded by the voltage of 0 pin. (This is floating, thus ensuring randomness)
+This 32-character string will be used as the session identifier.
+Each message sent in this session would be suffixed by an incrementing integer.
+This ensures that 2 devices can operate with the same server without any interference.
 
 \newpage
 
@@ -337,7 +394,7 @@ So, ESP-32S was used.
             }
         }
     }
-    \caption{Pseudo code of the algorithm implemented}\label{algo}
+    \caption{Pseudo code of the firmware}\label{algo}
 \end{algorithm}\DecMargin{1em}
 \clearpage
 
@@ -356,12 +413,20 @@ So, ESP-32S was used.
     [fontsize=\footnotesize,frame=lines,framerule=1pt,
         label=REMOTE\_SERVER\StrGobbleLeft{#1}{10},framesep=10pt]
     {python}{#1}}
+\newcommand{\HtmlCode}[1]{\inputminted
+    [fontsize=\footnotesize,frame=lines,framerule=1pt,
+        label=REMOTE\_SERVER\StrGobbleLeft{#1}{10},framesep=10pt]
+    {html}{#1}}
+\newcommand{\SqlCode}[1]{\inputminted
+    [fontsize=\footnotesize,frame=lines,framerule=1pt,
+        label=REMOTE\_SERVER\StrGobbleLeft{#1}{10},framesep=10pt]
+    {sql}{#1}}
 \newcommand{\CppCode}[1]{\inputminted
     [fontsize=\footnotesize,frame=lines,framerule=1pt,
         label=FIRMWARE\StrGobbleLeft{#1}{11},framesep=10pt]
     {c++}{#1}}
 
-\subsection{Server Source Code}
+\subsection{Remote Server Source Code}
 
 \PythonCode{../backend/app.py}
 \newpage
@@ -369,9 +434,12 @@ So, ESP-32S was used.
 \newpage
 \PythonCode{../backend/db/database.py}
 \newpage
+\HtmlCode{../backend/templates/index.html}
+\SqlCode{../backend/db/schema.sql}
+\newpage
 
 
-\subsection{Device Source Code}
+\subsection{Firmware Source Code}
 
 \CppCode{../firmware/src/main.cpp}
 \newpage
@@ -385,11 +453,15 @@ So, ESP-32S was used.
 \newpage
 
 
-\CppCode{../firmware/src/sensor/bmp180.h}
 \CppCode{../firmware/src/sensor/dht.h}
-\CppCode{../firmware/src/sensor/sensor.h}
-\CppCode{../firmware/src/sensor/bmp180.cpp}
 \CppCode{../firmware/src/sensor/dht.cpp}
+\newpage
+\CppCode{../firmware/src/sensor/bmp180.h}
+\CppCode{../firmware/src/sensor/bmp180.cpp}
+\CppCode{../firmware/src/sensor/ldr.h}
+\CppCode{../firmware/src/sensor/ldr.cpp}
+\newpage
+\CppCode{../firmware/src/sensor/sensor.h}
 \CppCode{../firmware/src/sensor/sensor.cpp}
 \newpage
 

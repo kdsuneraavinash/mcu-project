@@ -1,0 +1,113 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+cp}{\PYGZlt{}!doctype html\PYGZgt{}}
+\PYG{p}{\PYGZlt{}}\PYG{n+nt}{html} \PYG{n+na}{lang}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}en\PYGZdq{}}\PYG{p}{\PYGZgt{}}
+
+\PYG{p}{\PYGZlt{}}\PYG{n+nt}{head}\PYG{p}{\PYGZgt{}}
+    \PYG{c}{\PYGZlt{}!\PYGZhy{}\PYGZhy{} Required meta tags \PYGZhy{}\PYGZhy{}\PYGZgt{}}
+    \PYG{p}{\PYGZlt{}}\PYG{n+nt}{meta} \PYG{n+na}{charset}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}utf\PYGZhy{}8\PYGZdq{}}\PYG{p}{\PYGZgt{}}
+    \PYG{p}{\PYGZlt{}}\PYG{n+nt}{meta} \PYG{n+na}{name}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}viewport\PYGZdq{}} \PYG{n+na}{content}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}width=device\PYGZhy{}width, initial\PYGZhy{}scale=1, shrink\PYGZhy{}to\PYGZhy{}fit=no\PYGZdq{}}\PYG{p}{\PYGZgt{}}
+
+    \PYG{c}{\PYGZlt{}!\PYGZhy{}\PYGZhy{} Bootstrap CSS \PYGZhy{}\PYGZhy{}\PYGZgt{}}
+    \PYG{p}{\PYGZlt{}}\PYG{n+nt}{link} \PYG{n+na}{rel}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}stylesheet\PYGZdq{}} \PYG{n+na}{href}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css\PYGZdq{}}
+        \PYG{n+na}{integrity}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}sha384\PYGZhy{}Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm\PYGZdq{}} \PYG{n+na}{crossorigin}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}anonymous\PYGZdq{}}\PYG{p}{\PYGZgt{}}
+    \PYG{p}{\PYGZlt{}}\PYG{n+nt}{link} \PYG{n+na}{rel}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}stylesheet\PYGZdq{}} \PYG{n+na}{href}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}//cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css\PYGZdq{}}\PYG{p}{\PYGZgt{}}
+    \PYG{p}{\PYGZlt{}}\PYG{n+nt}{link} \PYG{n+na}{rel}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}stylesheet\PYGZdq{}} \PYG{n+na}{type}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}text/css\PYGZdq{}}
+        \PYG{n+na}{href}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}https://cdn.datatables.net/v/bs4/dt\PYGZhy{}1.10.22/fh\PYGZhy{}3.1.7/kt\PYGZhy{}2.5.3/r\PYGZhy{}2.2.6/sc\PYGZhy{}2.0.3/sp\PYGZhy{}1.2.1/datatables.min.css\PYGZdq{}} \PYG{p}{/\PYGZgt{}}
+    \PYG{p}{\PYGZlt{}}\PYG{n+nt}{title}\PYG{p}{\PYGZgt{}}Environment Monitor System\PYG{p}{\PYGZlt{}/}\PYG{n+nt}{title}\PYG{p}{\PYGZgt{}}
+\PYG{p}{\PYGZlt{}/}\PYG{n+nt}{head}\PYG{p}{\PYGZgt{}}
+
+\PYG{p}{\PYGZlt{}}\PYG{n+nt}{body} \PYG{n+na}{style}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}background: url(https://w.wallhaven.cc/full/x1/wallhaven\PYGZhy{}x1g16l.png); background\PYGZhy{}size: cover;\PYGZdq{}}\PYG{p}{\PYGZgt{}}
+    \PYG{p}{\PYGZlt{}}\PYG{n+nt}{nav} \PYG{n+na}{class}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}navbar navbar\PYGZhy{}dark bg\PYGZhy{}dark\PYGZdq{}}\PYG{p}{\PYGZgt{}}
+        \PYG{p}{\PYGZlt{}}\PYG{n+nt}{a} \PYG{n+na}{class}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}navbar\PYGZhy{}brand\PYGZdq{}} \PYG{n+na}{href}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}\PYGZsh{}\PYGZdq{}}\PYG{p}{\PYGZgt{}}Environment Monitor System\PYG{p}{\PYGZlt{}/}\PYG{n+nt}{a}\PYG{p}{\PYGZgt{}}
+        \PYG{p}{\PYGZlt{}}\PYG{n+nt}{span} \PYG{n+na}{class}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}navbar\PYGZhy{}text\PYGZdq{}}\PYG{p}{\PYGZgt{}}
+            CS3242
+        \PYG{p}{\PYGZlt{}/}\PYG{n+nt}{span}\PYG{p}{\PYGZgt{}}
+    \PYG{p}{\PYGZlt{}/}\PYG{n+nt}{nav}\PYG{p}{\PYGZgt{}}
+
+
+    \PYG{p}{\PYGZlt{}}\PYG{n+nt}{div} \PYG{n+na}{class}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}container p\PYGZhy{}5\PYGZdq{}}\PYG{p}{\PYGZgt{}}
+        \PYG{p}{\PYGZlt{}}\PYG{n+nt}{div} \PYG{n+na}{class}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}card p\PYGZhy{}4\PYGZdq{}}\PYG{p}{\PYGZgt{}}
+            \PYG{p}{\PYGZlt{}}\PYG{n+nt}{table} \PYG{n+na}{class}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}table table\PYGZhy{}sm\PYGZdq{}} \PYG{n+na}{id}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}table\PYGZdq{}}\PYG{p}{\PYGZgt{}}
+                \PYG{p}{\PYGZlt{}}\PYG{n+nt}{thead}\PYG{p}{\PYGZgt{}}
+                    \PYG{p}{\PYGZlt{}}\PYG{n+nt}{tr}\PYG{p}{\PYGZgt{}}
+                        \PYG{p}{\PYGZlt{}}\PYG{n+nt}{th} \PYG{n+na}{scope}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}col\PYGZdq{}} \PYG{n+na}{rowspan}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}2\PYGZdq{}}\PYG{p}{\PYGZgt{}}\PYGZsh{}\PYG{p}{\PYGZlt{}/}\PYG{n+nt}{th}\PYG{p}{\PYGZgt{}}
+                        \PYG{p}{\PYGZlt{}}\PYG{n+nt}{th} \PYG{n+na}{scope}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}col\PYGZdq{}} \PYG{n+na}{rowspan}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}2\PYGZdq{}}\PYG{p}{\PYGZgt{}}Timestamp\PYG{p}{\PYGZlt{}/}\PYG{n+nt}{th}\PYG{p}{\PYGZgt{}}
+                        \PYG{p}{\PYGZlt{}}\PYG{n+nt}{th} \PYG{n+na}{scope}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}col\PYGZdq{}} \PYG{n+na}{colspan}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}2\PYGZdq{}}\PYG{p}{\PYGZgt{}}Temperature (°C)\PYG{p}{\PYGZlt{}/}\PYG{n+nt}{th}\PYG{p}{\PYGZgt{}}
+                        \PYG{p}{\PYGZlt{}}\PYG{n+nt}{th} \PYG{n+na}{scope}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}col\PYGZdq{}} \PYG{n+na}{colspan}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}2\PYGZdq{}}\PYG{p}{\PYGZgt{}}Humidity\PYG{p}{\PYGZlt{}/}\PYG{n+nt}{th}\PYG{p}{\PYGZgt{}}
+                        \PYG{p}{\PYGZlt{}}\PYG{n+nt}{th} \PYG{n+na}{scope}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}col\PYGZdq{}} \PYG{n+na}{colspan}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}2\PYGZdq{}}\PYG{p}{\PYGZgt{}}Pressure (Pa)\PYG{p}{\PYGZlt{}/}\PYG{n+nt}{th}\PYG{p}{\PYGZgt{}}
+                        \PYG{p}{\PYGZlt{}}\PYG{n+nt}{th} \PYG{n+na}{scope}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}col\PYGZdq{}} \PYG{n+na}{colspan}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}2\PYGZdq{}}\PYG{p}{\PYGZgt{}}Light Intensity\PYG{p}{\PYGZlt{}/}\PYG{n+nt}{th}\PYG{p}{\PYGZgt{}}
+                    \PYG{p}{\PYGZlt{}/}\PYG{n+nt}{tr}\PYG{p}{\PYGZgt{}}
+                    \PYG{p}{\PYGZlt{}}\PYG{n+nt}{tr}\PYG{p}{\PYGZgt{}}
+                        \PYG{p}{\PYGZlt{}}\PYG{n+nt}{th} \PYG{n+na}{scope}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}col\PYGZdq{}}\PYG{p}{\PYGZgt{}}Mean\PYG{p}{\PYGZlt{}/}\PYG{n+nt}{th}\PYG{p}{\PYGZgt{}}
+                        \PYG{p}{\PYGZlt{}}\PYG{n+nt}{th} \PYG{n+na}{scope}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}col\PYGZdq{}}\PYG{p}{\PYGZgt{}}Std\PYG{p}{\PYGZlt{}/}\PYG{n+nt}{th}\PYG{p}{\PYGZgt{}}
+                        \PYG{p}{\PYGZlt{}}\PYG{n+nt}{th} \PYG{n+na}{scope}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}col\PYGZdq{}}\PYG{p}{\PYGZgt{}}Mean\PYG{p}{\PYGZlt{}/}\PYG{n+nt}{th}\PYG{p}{\PYGZgt{}}
+                        \PYG{p}{\PYGZlt{}}\PYG{n+nt}{th} \PYG{n+na}{scope}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}col\PYGZdq{}}\PYG{p}{\PYGZgt{}}Std\PYG{p}{\PYGZlt{}/}\PYG{n+nt}{th}\PYG{p}{\PYGZgt{}}
+                        \PYG{p}{\PYGZlt{}}\PYG{n+nt}{th} \PYG{n+na}{scope}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}col\PYGZdq{}}\PYG{p}{\PYGZgt{}}Mean\PYG{p}{\PYGZlt{}/}\PYG{n+nt}{th}\PYG{p}{\PYGZgt{}}
+                        \PYG{p}{\PYGZlt{}}\PYG{n+nt}{th} \PYG{n+na}{scope}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}col\PYGZdq{}}\PYG{p}{\PYGZgt{}}Std\PYG{p}{\PYGZlt{}/}\PYG{n+nt}{th}\PYG{p}{\PYGZgt{}}
+                        \PYG{p}{\PYGZlt{}}\PYG{n+nt}{th} \PYG{n+na}{scope}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}col\PYGZdq{}}\PYG{p}{\PYGZgt{}}Mean\PYG{p}{\PYGZlt{}/}\PYG{n+nt}{th}\PYG{p}{\PYGZgt{}}
+                        \PYG{p}{\PYGZlt{}}\PYG{n+nt}{th} \PYG{n+na}{scope}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}col\PYGZdq{}}\PYG{p}{\PYGZgt{}}Std\PYG{p}{\PYGZlt{}/}\PYG{n+nt}{th}\PYG{p}{\PYGZgt{}}
+                    \PYG{p}{\PYGZlt{}/}\PYG{n+nt}{tr}\PYG{p}{\PYGZgt{}}
+                \PYG{p}{\PYGZlt{}/}\PYG{n+nt}{thead}\PYG{p}{\PYGZgt{}}
+                \PYG{p}{\PYGZlt{}}\PYG{n+nt}{tbody}\PYG{p}{\PYGZgt{}}
+                    \PYGZob{}\PYGZpc{} for entry in entries \PYGZpc{}\PYGZcb{}
+                    \PYG{p}{\PYGZlt{}}\PYG{n+nt}{tr}\PYG{p}{\PYGZgt{}}
+                        \PYG{p}{\PYGZlt{}}\PYG{n+nt}{td}\PYG{p}{\PYGZgt{}}
+                            \PYG{p}{\PYGZlt{}}\PYG{n+nt}{span} \PYG{n+na}{data\PYGZhy{}toggle}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}tooltip\PYGZdq{}} \PYG{n+na}{data\PYGZhy{}placement}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}left\PYGZdq{}} \PYG{n+na}{title}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}ID: \PYGZob{}\PYGZob{} entry[\PYGZsq{}identifier\PYGZsq{}] \PYGZcb{}\PYGZcb{}\PYGZdq{}}\PYG{p}{\PYGZgt{}}
+                                \PYGZob{}\PYGZob{}loop.index\PYGZcb{}\PYGZcb{}
+                            \PYG{p}{\PYGZlt{}/}\PYG{n+nt}{span}\PYG{p}{\PYGZgt{}}
+                        \PYG{p}{\PYGZlt{}/}\PYG{n+nt}{td}\PYG{p}{\PYGZgt{}}
+                        \PYG{p}{\PYGZlt{}}\PYG{n+nt}{td}\PYG{p}{\PYGZgt{}} \PYGZob{}\PYGZob{} entry[\PYGZsq{}sent\PYGZsq{}] \PYGZcb{}\PYGZcb{} \PYG{p}{\PYGZlt{}/}\PYG{n+nt}{td}\PYG{p}{\PYGZgt{}}
+                        \PYG{p}{\PYGZlt{}}\PYG{n+nt}{td}\PYG{p}{\PYGZgt{}}\PYGZob{}\PYGZob{} entry[\PYGZsq{}info\PYGZus{}parameter\PYGZus{}temp\PYGZus{}mean\PYGZsq{}] \PYGZcb{}\PYGZcb{}\PYG{p}{\PYGZlt{}/}\PYG{n+nt}{td}\PYG{p}{\PYGZgt{}}
+                        \PYG{p}{\PYGZlt{}}\PYG{n+nt}{td}\PYG{p}{\PYGZgt{}}\PYGZob{}\PYGZob{} entry[\PYGZsq{}info\PYGZus{}parameter\PYGZus{}temp\PYGZus{}std\PYGZsq{}] \PYGZcb{}\PYGZcb{}\PYG{p}{\PYGZlt{}/}\PYG{n+nt}{td}\PYG{p}{\PYGZgt{}}
+                        \PYG{p}{\PYGZlt{}}\PYG{n+nt}{td}\PYG{p}{\PYGZgt{}}\PYGZob{}\PYGZob{} entry[\PYGZsq{}info\PYGZus{}parameter\PYGZus{}humidity\PYGZus{}mean\PYGZsq{}] \PYGZcb{}\PYGZcb{}\PYG{p}{\PYGZlt{}/}\PYG{n+nt}{td}\PYG{p}{\PYGZgt{}}
+                        \PYG{p}{\PYGZlt{}}\PYG{n+nt}{td}\PYG{p}{\PYGZgt{}}\PYGZob{}\PYGZob{} entry[\PYGZsq{}info\PYGZus{}parameter\PYGZus{}humidity\PYGZus{}std\PYGZsq{}] \PYGZcb{}\PYGZcb{}\PYG{p}{\PYGZlt{}/}\PYG{n+nt}{td}\PYG{p}{\PYGZgt{}}
+                        \PYG{p}{\PYGZlt{}}\PYG{n+nt}{td}\PYG{p}{\PYGZgt{}}\PYGZob{}\PYGZob{} entry[\PYGZsq{}info\PYGZus{}parameter\PYGZus{}pressure\PYGZus{}mean\PYGZsq{}] \PYGZcb{}\PYGZcb{}\PYG{p}{\PYGZlt{}/}\PYG{n+nt}{td}\PYG{p}{\PYGZgt{}}
+                        \PYG{p}{\PYGZlt{}}\PYG{n+nt}{td}\PYG{p}{\PYGZgt{}}\PYGZob{}\PYGZob{} entry[\PYGZsq{}info\PYGZus{}parameter\PYGZus{}pressure\PYGZus{}std\PYGZsq{}] \PYGZcb{}\PYGZcb{}\PYG{p}{\PYGZlt{}/}\PYG{n+nt}{td}\PYG{p}{\PYGZgt{}}
+                        \PYG{p}{\PYGZlt{}}\PYG{n+nt}{td}\PYG{p}{\PYGZgt{}}\PYGZob{}\PYGZob{} entry[\PYGZsq{}info\PYGZus{}parameter\PYGZus{}light\PYGZus{}mean\PYGZsq{}] \PYGZcb{}\PYGZcb{}\PYG{p}{\PYGZlt{}/}\PYG{n+nt}{td}\PYG{p}{\PYGZgt{}}
+                        \PYG{p}{\PYGZlt{}}\PYG{n+nt}{td}\PYG{p}{\PYGZgt{}}\PYGZob{}\PYGZob{} entry[\PYGZsq{}info\PYGZus{}parameter\PYGZus{}light\PYGZus{}std\PYGZsq{}] \PYGZcb{}\PYGZcb{}\PYG{p}{\PYGZlt{}/}\PYG{n+nt}{td}\PYG{p}{\PYGZgt{}}
+                    \PYG{p}{\PYGZlt{}/}\PYG{n+nt}{tr}\PYG{p}{\PYGZgt{}}
+                    \PYGZob{}\PYGZpc{} endfor \PYGZpc{}\PYGZcb{}
+                \PYG{p}{\PYGZlt{}/}\PYG{n+nt}{tbody}\PYG{p}{\PYGZgt{}}
+            \PYG{p}{\PYGZlt{}/}\PYG{n+nt}{table}\PYG{p}{\PYGZgt{}}
+        \PYG{p}{\PYGZlt{}/}\PYG{n+nt}{div}\PYG{p}{\PYGZgt{}}
+    \PYG{p}{\PYGZlt{}/}\PYG{n+nt}{div}\PYG{p}{\PYGZgt{}}
+
+    \PYG{c}{\PYGZlt{}!\PYGZhy{}\PYGZhy{} Optional JavaScript \PYGZhy{}\PYGZhy{}\PYGZgt{}}
+    \PYG{c}{\PYGZlt{}!\PYGZhy{}\PYGZhy{} jQuery first, then Popper.js, then Bootstrap JS \PYGZhy{}\PYGZhy{}\PYGZgt{}}
+    \PYG{p}{\PYGZlt{}}\PYG{n+nt}{script} \PYG{n+na}{src}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}https://code.jquery.com/jquery\PYGZhy{}3.2.1.slim.min.js\PYGZdq{}}
+        \PYG{n+na}{integrity}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}sha384\PYGZhy{}KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN\PYGZdq{}}
+        \PYG{n+na}{crossorigin}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}anonymous\PYGZdq{}}\PYG{p}{\PYGZgt{}\PYGZlt{}/}\PYG{n+nt}{script}\PYG{p}{\PYGZgt{}}
+    \PYG{p}{\PYGZlt{}}\PYG{n+nt}{script} \PYG{n+na}{src}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js\PYGZdq{}}
+        \PYG{n+na}{integrity}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}sha384\PYGZhy{}ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q\PYGZdq{}}
+        \PYG{n+na}{crossorigin}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}anonymous\PYGZdq{}}\PYG{p}{\PYGZgt{}\PYGZlt{}/}\PYG{n+nt}{script}\PYG{p}{\PYGZgt{}}
+    \PYG{p}{\PYGZlt{}}\PYG{n+nt}{script} \PYG{n+na}{src}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js\PYGZdq{}}
+        \PYG{n+na}{integrity}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}sha384\PYGZhy{}JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl\PYGZdq{}}
+        \PYG{n+na}{crossorigin}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}anonymous\PYGZdq{}}\PYG{p}{\PYGZgt{}\PYGZlt{}/}\PYG{n+nt}{script}\PYG{p}{\PYGZgt{}}
+
+    \PYG{p}{\PYGZlt{}}\PYG{n+nt}{script} \PYG{n+na}{type}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}text/javascript\PYGZdq{}}
+        \PYG{n+na}{src}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}https://cdn.datatables.net/v/bs4/dt\PYGZhy{}1.10.22/fh\PYGZhy{}3.1.7/kt\PYGZhy{}2.5.3/r\PYGZhy{}2.2.6/sc\PYGZhy{}2.0.3/sp\PYGZhy{}1.2.1/datatables.min.js\PYGZdq{}}\PYG{p}{\PYGZgt{}\PYGZlt{}/}\PYG{n+nt}{script}\PYG{p}{\PYGZgt{}}
+    \PYG{p}{\PYGZlt{}}\PYG{n+nt}{script} \PYG{n+na}{src}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js\PYGZdq{}}
+        \PYG{n+na}{integrity}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}sha512\PYGZhy{}qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==\PYGZdq{}}
+        \PYG{n+na}{crossorigin}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}anonymous\PYGZdq{}}\PYG{p}{\PYGZgt{}\PYGZlt{}/}\PYG{n+nt}{script}\PYG{p}{\PYGZgt{}}
+    \PYG{p}{\PYGZlt{}}\PYG{n+nt}{script} \PYG{n+na}{src}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}//cdn.datatables.net/plug\PYGZhy{}ins/1.10.21/dataRender/datetime.js\PYGZdq{}}\PYG{p}{\PYGZgt{}\PYGZlt{}/}\PYG{n+nt}{script}\PYG{p}{\PYGZgt{}}
+    \PYG{p}{\PYGZlt{}}\PYG{n+nt}{script}\PYG{p}{\PYGZgt{}}
+        \PYG{n+nx}{\PYGZdl{}}\PYG{p}{(}\PYG{n+nb}{document}\PYG{p}{).}\PYG{n+nx}{ready}\PYG{p}{(}\PYG{k+kd}{function} \PYG{p}{()} \PYG{p}{\PYGZob{}}
+            \PYG{n+nx}{\PYGZdl{}}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}\PYGZsh{}table\PYGZsq{}}\PYG{p}{).}\PYG{n+nx}{DataTable}\PYG{p}{(\PYGZob{}}
+                \PYG{n+nx}{responsive}\PYG{o}{:} \PYG{k+kc}{true}\PYG{p}{,}
+                \PYG{n+nx}{columnDefs}\PYG{o}{:} \PYG{p}{[}
+                    \PYG{p}{\PYGZob{}}
+                        \PYG{n+nx}{targets}\PYG{o}{:} \PYG{p}{[}\PYG{l+m+mf}{1}\PYG{p}{],}
+                        \PYG{n+nx}{render}\PYG{o}{:} \PYG{n+nx}{\PYGZdl{}}\PYG{p}{.}\PYG{n+nx}{fn}\PYG{p}{.}\PYG{n+nx}{dataTable}\PYG{p}{.}\PYG{n+nx}{render}\PYG{p}{.}\PYG{n+nx}{moment}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}YYYY\PYGZhy{}MM\PYGZhy{}DD HH:mm:ssZ\PYGZsq{}}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}MMM Do YYYY hh:mm a\PYGZsq{}}\PYG{p}{)}
+                    \PYG{p}{\PYGZcb{}}
+                \PYG{p}{],}
+            \PYG{p}{\PYGZcb{});}
+        \PYG{p}{\PYGZcb{});}
+
+        \PYG{n+nx}{\PYGZdl{}}\PYG{p}{(}\PYG{k+kd}{function} \PYG{p}{()} \PYG{p}{\PYGZob{}}
+            \PYG{n+nx}{\PYGZdl{}}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}[data\PYGZhy{}toggle=\PYGZdq{}tooltip\PYGZdq{}]\PYGZsq{}}\PYG{p}{).}\PYG{n+nx}{tooltip}\PYG{p}{()}
+        \PYG{p}{\PYGZcb{})}
+    \PYG{p}{\PYGZlt{}/}\PYG{n+nt}{script}\PYG{p}{\PYGZgt{}}
+\PYG{p}{\PYGZlt{}/}\PYG{n+nt}{body}\PYG{p}{\PYGZgt{}}
+
+\PYG{p}{\PYGZlt{}/}\PYG{n+nt}{html}\PYG{p}{\PYGZgt{}}
+\end{Verbatim}

@@ -1,0 +1,28 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{DROP} \PYG{k}{TABLE} \PYG{k}{IF} \PYG{k}{EXISTS} \PYG{n}{entry}\PYG{p}{;}
+
+\PYG{k}{CREATE} \PYG{k}{TABLE} \PYG{n}{entry} \PYG{p}{(}
+  \PYG{n}{id} \PYG{n+nb}{INTEGER} \PYG{k}{PRIMARY} \PYG{k}{KEY} \PYG{n}{AUTOINCREMENT}\PYG{p}{,}
+  \PYG{n}{identifier} \PYG{n+nb}{TEXT} \PYG{k}{UNIQUE} \PYG{k}{NOT} \PYG{k}{NULL}\PYG{p}{,}
+  \PYG{n}{sender} \PYG{n+nb}{TEXT} \PYG{k}{NOT} \PYG{k}{NULL}\PYG{p}{,}
+  \PYG{n}{sent} \PYG{k}{TIMESTAMP} \PYG{k}{NOT} \PYG{k}{NULL}\PYG{p}{,}
+  \PYG{n}{status} \PYG{n+nb}{TEXT} \PYG{k}{NOT} \PYG{k}{NULL}\PYG{p}{,}
+  \PYG{n}{msgType} \PYG{n+nb}{TEXT} \PYG{k}{NOT} \PYG{k}{NULL}\PYG{p}{,}
+  \PYG{k}{scope} \PYG{n+nb}{TEXT} \PYG{k}{NOT} \PYG{k}{NULL}\PYG{p}{,}
+  \PYG{n}{info\PYGZus{}category} \PYG{n+nb}{TEXT} \PYG{k}{NOT} \PYG{k}{NULL}\PYG{p}{,}
+  \PYG{n}{info\PYGZus{}event} \PYG{n+nb}{TEXT} \PYG{k}{NOT} \PYG{k}{NULL}\PYG{p}{,}
+  \PYG{n}{info\PYGZus{}responseType} \PYG{n+nb}{TEXT} \PYG{k}{NOT} \PYG{k}{NULL}\PYG{p}{,}
+  \PYG{n}{info\PYGZus{}urgency} \PYG{n+nb}{TEXT} \PYG{k}{NOT} \PYG{k}{NULL}\PYG{p}{,}
+  \PYG{n}{info\PYGZus{}severity} \PYG{n+nb}{TEXT} \PYG{k}{NOT} \PYG{k}{NULL}\PYG{p}{,}
+  \PYG{n}{info\PYGZus{}certainty} \PYG{n+nb}{TEXT} \PYG{k}{NOT} \PYG{k}{NULL}\PYG{p}{,}
+  \PYG{n}{info\PYGZus{}senderName} \PYG{n+nb}{TEXT} \PYG{k}{NOT} \PYG{k}{NULL}\PYG{p}{,}
+  \PYG{n}{info\PYGZus{}parameter\PYGZus{}temp\PYGZus{}mean} \PYG{n+nb}{NUMERIC} \PYG{k}{NOT} \PYG{k}{NULL}\PYG{p}{,}
+  \PYG{n}{info\PYGZus{}parameter\PYGZus{}temp\PYGZus{}std} \PYG{n+nb}{NUMERIC} \PYG{k}{NOT} \PYG{k}{NULL}\PYG{p}{,}
+  \PYG{n}{info\PYGZus{}parameter\PYGZus{}humidity\PYGZus{}mean} \PYG{n+nb}{NUMERIC} \PYG{k}{NOT} \PYG{k}{NULL}\PYG{p}{,}
+  \PYG{n}{info\PYGZus{}parameter\PYGZus{}humidity\PYGZus{}std} \PYG{n+nb}{NUMERIC} \PYG{k}{NOT} \PYG{k}{NULL}\PYG{p}{,}
+  \PYG{n}{info\PYGZus{}parameter\PYGZus{}pressure\PYGZus{}mean} \PYG{n+nb}{NUMERIC} \PYG{k}{NOT} \PYG{k}{NULL}\PYG{p}{,}
+  \PYG{n}{info\PYGZus{}parameter\PYGZus{}pressure\PYGZus{}std} \PYG{n+nb}{NUMERIC} \PYG{k}{NOT} \PYG{k}{NULL}\PYG{p}{,}
+  \PYG{n}{info\PYGZus{}parameter\PYGZus{}light\PYGZus{}mean} \PYG{n+nb}{NUMERIC} \PYG{k}{NOT} \PYG{k}{NULL}\PYG{p}{,}
+  \PYG{n}{info\PYGZus{}parameter\PYGZus{}light\PYGZus{}std} \PYG{n+nb}{NUMERIC} \PYG{k}{NOT} \PYG{k}{NULL}
+\PYG{p}{);}
+\end{Verbatim}

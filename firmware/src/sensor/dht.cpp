@@ -2,7 +2,7 @@
 #include <Arduino.h>
 #include <DHT.h>
 
-#define DHTPIN 4
+#define DHTPIN 2
 #define DHTTYPE DHT11
 
 DHT dht(DHTPIN, DHTTYPE);
