@@ -1,0 +1,95 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+cp}{\PYGZsh{}include} \PYG{c+cpf}{\PYGZlt{}Arduino.h\PYGZgt{}}
+\PYG{c+cp}{\PYGZsh{}include} \PYG{c+cpf}{\PYGZlt{}cppQueue.h\PYGZgt{}}
+
+\PYG{c+cp}{\PYGZsh{}include} \PYG{c+cpf}{\PYGZdq{}cap/cap.h\PYGZdq{}}
+\PYG{c+cp}{\PYGZsh{}include} \PYG{c+cpf}{\PYGZdq{}sensor/bmp180.h\PYGZdq{}}
+\PYG{c+cp}{\PYGZsh{}include} \PYG{c+cpf}{\PYGZdq{}sensor/dht.h\PYGZdq{}}
+\PYG{c+cp}{\PYGZsh{}include} \PYG{c+cpf}{\PYGZdq{}sensor/sensor.h\PYGZdq{}}
+\PYG{c+cp}{\PYGZsh{}include} \PYG{c+cpf}{\PYGZdq{}utils.h\PYGZdq{}}
+\PYG{c+cp}{\PYGZsh{}include} \PYG{c+cpf}{\PYGZdq{}wifi/controller.h\PYGZdq{}}
+\PYG{c+cp}{\PYGZsh{}include} \PYG{c+cpf}{\PYGZdq{}wifi/ntp.h\PYGZdq{}}
+
+\PYG{c+cp}{\PYGZsh{}define CAP\PYGZus{}SIZE 3000}
+\PYG{c+cp}{\PYGZsh{}define N\PYGZus{}SAMPLES 5}
+\PYG{c+cp}{\PYGZsh{}define CACHE\PYGZus{}SIZE 10}
+\PYG{c+cp}{\PYGZsh{}define REMOTE\PYGZus{}SERVER \PYGZdq{}http:}\PYG{c+c1}{//7e86ccb1d82f.ngrok.io/\PYGZdq{}}
+
+\PYG{c+cp}{\PYGZsh{}define SYNC\PYGZus{}PERIOD (30 * 1000)}
+\PYG{c+cp}{\PYGZsh{}define SAMPLE\PYGZus{}PERIOD (SYNC\PYGZus{}PERIOD / (N\PYGZus{}SAMPLES))}
+
+\PYG{k+kt}{float} \PYG{n}{tempSamples}\PYG{p}{[}\PYG{n}{N\PYGZus{}SAMPLES}\PYG{p}{];}
+\PYG{k+kt}{float} \PYG{n}{humiditySamples}\PYG{p}{[}\PYG{n}{N\PYGZus{}SAMPLES}\PYG{p}{];}
+\PYG{k+kt}{float} \PYG{n}{pressureSamples}\PYG{p}{[}\PYG{n}{N\PYGZus{}SAMPLES}\PYG{p}{];}
+\PYG{k+kt}{float} \PYG{n}{lightSamples}\PYG{p}{[}\PYG{n}{N\PYGZus{}SAMPLES}\PYG{p}{];}
+\PYG{k+kt}{int} \PYG{n}{currentSample} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+\PYG{k+kt}{unsigned} \PYG{k+kt}{long} \PYG{n}{lastSampleMillis}\PYG{p}{;}
+\PYG{n}{Queue} \PYG{n+nf}{capQueue}\PYG{p}{(}\PYG{n}{CAP\PYGZus{}SIZE}\PYG{p}{,} \PYG{n}{CACHE\PYGZus{}SIZE}\PYG{p}{);}
+
+\PYG{k+kt}{void} \PYG{n+nf}{clearSample}\PYG{p}{(}\PYG{k+kt}{float}\PYG{o}{*} \PYG{n}{buffer}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+  \PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZlt{}} \PYG{n}{N\PYGZus{}SAMPLES}\PYG{p}{;} \PYG{n}{i}\PYG{o}{++}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+    \PYG{n}{buffer}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{=} \PYG{n+nb}{NULL}\PYG{p}{;}
+  \PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{k+kt}{void} \PYG{n+nf}{clearSamples}\PYG{p}{()} \PYG{p}{\PYGZob{}}
+  \PYG{n}{clearSample}\PYG{p}{(}\PYG{n}{tempSamples}\PYG{p}{);}
+  \PYG{n}{clearSample}\PYG{p}{(}\PYG{n}{humiditySamples}\PYG{p}{);}
+  \PYG{n}{clearSample}\PYG{p}{(}\PYG{n}{pressureSamples}\PYG{p}{);}
+  \PYG{n}{clearSample}\PYG{p}{(}\PYG{n}{lightSamples}\PYG{p}{);}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{n}{statistic} \PYG{n+nf}{toStatistic}\PYG{p}{(}\PYG{k+kt}{float}\PYG{o}{*} \PYG{n}{buffer}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+  \PYG{k+kt}{float} \PYG{n}{sensorMean} \PYG{o}{=} \PYG{n}{mean}\PYG{p}{(}\PYG{n}{buffer}\PYG{p}{,} \PYG{n}{N\PYGZus{}SAMPLES}\PYG{p}{);}
+  \PYG{k+kt}{float} \PYG{n}{sensorStd} \PYG{o}{=} \PYG{n}{standardDeviation}\PYG{p}{(}\PYG{n}{buffer}\PYG{p}{,} \PYG{n}{N\PYGZus{}SAMPLES}\PYG{p}{,} \PYG{n}{sensorMean}\PYG{p}{);}
+  \PYG{k}{return} \PYG{p}{\PYGZob{}}\PYG{n}{sensorMean}\PYG{p}{,} \PYG{n}{sensorStd}\PYG{p}{\PYGZcb{};}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{k+kt}{void} \PYG{n+nf}{setup}\PYG{p}{()} \PYG{p}{\PYGZob{}}
+  \PYG{n}{pinMode}\PYG{p}{(}\PYG{n}{LED\PYGZus{}BUILTIN}\PYG{p}{,} \PYG{n}{OUTPUT}\PYG{p}{);}
+  \PYG{n}{Serial}\PYG{p}{.}\PYG{n}{begin}\PYG{p}{(}\PYG{l+m+mi}{115200}\PYG{p}{);}
+  \PYG{n}{initializeConnection}\PYG{p}{();}
+  \PYG{n}{initializeNtp}\PYG{p}{();}
+  \PYG{n}{setupIdentifier}\PYG{p}{();}
+  \PYG{n}{initializeDHT}\PYG{p}{();}
+  \PYG{n}{initializeBMP}\PYG{p}{();}
+  \PYG{n}{clearSamples}\PYG{p}{();}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{k+kt}{void} \PYG{n+nf}{loop}\PYG{p}{()} \PYG{p}{\PYGZob{}}
+  \PYG{k}{if} \PYG{p}{(}\PYG{n}{millis}\PYG{p}{()} \PYG{o}{\PYGZhy{}} \PYG{n}{lastSampleMillis} \PYG{o}{\PYGZlt{}} \PYG{n}{SAMPLE\PYGZus{}PERIOD}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+    \PYG{k}{return}\PYG{p}{;}
+  \PYG{p}{\PYGZcb{}}
+
+  \PYG{n}{lastSampleMillis} \PYG{o}{=} \PYG{n}{millis}\PYG{p}{();}
+  \PYG{k}{if} \PYG{p}{(}\PYG{n}{currentSample} \PYG{o}{==} \PYG{n}{N\PYGZus{}SAMPLES}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+    \PYG{n}{Serial}\PYG{p}{.}\PYG{n}{println}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}[MAIN] Starting server sync...\PYGZdq{}}\PYG{p}{);}
+    \PYG{k+kt}{char} \PYG{n}{cap}\PYG{p}{[}\PYG{n}{CAP\PYGZus{}SIZE}\PYG{p}{];}
+    \PYG{n}{statistic} \PYG{n}{temp} \PYG{o}{=} \PYG{n}{toStatistic}\PYG{p}{(}\PYG{n}{tempSamples}\PYG{p}{);}
+    \PYG{n}{statistic} \PYG{n}{humidity} \PYG{o}{=} \PYG{n}{toStatistic}\PYG{p}{(}\PYG{n}{humiditySamples}\PYG{p}{);}
+    \PYG{n}{statistic} \PYG{n}{pressure} \PYG{o}{=} \PYG{n}{toStatistic}\PYG{p}{(}\PYG{n}{pressureSamples}\PYG{p}{);}
+    \PYG{n}{statistic} \PYG{n}{light} \PYG{o}{=} \PYG{n}{toStatistic}\PYG{p}{(}\PYG{n}{lightSamples}\PYG{p}{);}
+    \PYG{n}{generateCap}\PYG{p}{(}\PYG{n}{cap}\PYG{p}{,} \PYG{n}{CAP\PYGZus{}SIZE}\PYG{p}{,} \PYG{n}{temp}\PYG{p}{,} \PYG{n}{humidity}\PYG{p}{,} \PYG{n}{pressure}\PYG{p}{,} \PYG{n}{light}\PYG{p}{);}
+    \PYG{k}{if} \PYG{p}{(}\PYG{n}{capQueue}\PYG{p}{.}\PYG{n}{isFull}\PYG{p}{())} \PYG{p}{\PYGZob{}}
+      \PYG{n}{Serial}\PYG{p}{.}\PYG{n}{println}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}[CACHE] CAP cache full, discarding oldest entry.\PYGZdq{}}\PYG{p}{);}
+      \PYG{n}{capQueue}\PYG{p}{.}\PYG{n}{drop}\PYG{p}{();}
+    \PYG{p}{\PYGZcb{}}
+    \PYG{n}{capQueue}\PYG{p}{.}\PYG{n}{push}\PYG{p}{(}\PYG{n}{cap}\PYG{p}{);}
+    \PYG{k+kt}{char} \PYG{n}{serverAddress}\PYG{p}{[]} \PYG{o}{=} \PYG{n}{REMOTE\PYGZus{}SERVER}\PYG{p}{;}
+    \PYG{n}{processCapQueue}\PYG{p}{(}\PYG{o}{\PYGZam{}}\PYG{n}{capQueue}\PYG{p}{,} \PYG{n}{CAP\PYGZus{}SIZE}\PYG{p}{,} \PYG{n}{serverAddress}\PYG{p}{);}
+    \PYG{n}{currentSample} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+    \PYG{n}{clearSamples}\PYG{p}{();}
+  \PYG{p}{\PYGZcb{}} \PYG{k}{else} \PYG{p}{\PYGZob{}}
+    \PYG{n}{Serial}\PYG{p}{.}\PYG{n}{println}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}[MAIN] Starting sensor sync...\PYGZdq{}}\PYG{p}{);}
+    \PYG{k+kt}{float} \PYG{n}{temp} \PYG{o}{=} \PYG{n}{sampleTemperature}\PYG{p}{();}
+    \PYG{k+kt}{float} \PYG{n}{humidity} \PYG{o}{=} \PYG{n}{sampleHumidity}\PYG{p}{();}
+    \PYG{k+kt}{float} \PYG{n}{pressure} \PYG{o}{=} \PYG{n}{samplePressure}\PYG{p}{();}
+    \PYG{k+kt}{float} \PYG{n}{light} \PYG{o}{=} \PYG{n}{sampleLight}\PYG{p}{();}
+    \PYG{n}{tempSamples}\PYG{p}{[}\PYG{n}{currentSample}\PYG{p}{]} \PYG{o}{=} \PYG{n}{temp}\PYG{p}{;}
+    \PYG{n}{humiditySamples}\PYG{p}{[}\PYG{n}{currentSample}\PYG{p}{]} \PYG{o}{=} \PYG{n}{humidity}\PYG{p}{;}
+    \PYG{n}{pressureSamples}\PYG{p}{[}\PYG{n}{currentSample}\PYG{p}{]} \PYG{o}{=} \PYG{n}{pressure}\PYG{p}{;}
+    \PYG{n}{lightSamples}\PYG{p}{[}\PYG{n}{currentSample}\PYG{p}{]} \PYG{o}{=} \PYG{n}{light}\PYG{p}{;}
+    \PYG{n}{currentSample}\PYG{o}{++}\PYG{p}{;}
+  \PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

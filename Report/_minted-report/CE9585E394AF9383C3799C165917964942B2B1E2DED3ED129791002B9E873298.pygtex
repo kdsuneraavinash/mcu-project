@@ -1,0 +1,37 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+cp}{\PYGZsh{}include} \PYG{c+cpf}{\PYGZlt{}NTPClient.h\PYGZgt{}}
+\PYG{c+cp}{\PYGZsh{}include} \PYG{c+cpf}{\PYGZlt{}WiFiUdp.h\PYGZgt{}}
+
+\PYG{c+cp}{\PYGZsh{}define TIME\PYGZus{}ZONE ((11 * 3600) / 2)}
+\PYG{c+cp}{\PYGZsh{}define TIMESTAMP\PYGZus{}SIZE 50}
+
+\PYG{n}{WiFiUDP} \PYG{n}{ntpUDP}\PYG{p}{;}
+\PYG{n}{NTPClient} \PYG{n+nf}{timeClient}\PYG{p}{(}\PYG{n}{ntpUDP}\PYG{p}{);}
+
+\PYG{k+kt}{char} \PYG{n}{formattedDate}\PYG{p}{[}\PYG{l+m+mi}{50}\PYG{p}{];}
+
+\PYG{c+cm}{/**}
+\PYG{c+cm}{ * Initialize NTP connection.}
+\PYG{c+cm}{ * The WiFi must ve set\PYGZhy{}up at this point.}
+\PYG{c+cm}{ * */}
+\PYG{k+kt}{void} \PYG{n+nf}{initializeNtp}\PYG{p}{()} \PYG{p}{\PYGZob{}}
+  \PYG{n}{Serial}\PYG{p}{.}\PYG{n}{println}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}[NTP] Starting NTP connection...\PYGZdq{}}\PYG{p}{);}
+  \PYG{n}{timeClient}\PYG{p}{.}\PYG{n}{begin}\PYG{p}{();}
+  \PYG{n}{timeClient}\PYG{p}{.}\PYG{n}{setTimeOffset}\PYG{p}{(}\PYG{n}{TIME\PYGZus{}ZONE}\PYG{p}{);}
+  \PYG{n}{Serial}\PYG{p}{.}\PYG{n}{printf}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}[NTP] NTP connected in \PYGZpc{}d time zone.}\PYG{l+s+se}{\PYGZbs{}n}\PYG{l+s}{\PYGZdq{}}\PYG{p}{,} \PYG{n}{TIME\PYGZus{}ZONE}\PYG{p}{);}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{c+cm}{/**}
+\PYG{c+cm}{ * Update NTP time and set global variables}
+\PYG{c+cm}{ * */}
+\PYG{k+kt}{void} \PYG{n+nf}{updateTime}\PYG{p}{()} \PYG{p}{\PYGZob{}}
+  \PYG{n}{Serial}\PYG{p}{.}\PYG{n}{println}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}[NTP] Retrieving timestamp via ntp...\PYGZdq{}}\PYG{p}{);}
+  \PYG{k}{while} \PYG{p}{(}\PYG{o}{!}\PYG{n}{timeClient}\PYG{p}{.}\PYG{n}{update}\PYG{p}{())} \PYG{p}{\PYGZob{}}
+    \PYG{n}{timeClient}\PYG{p}{.}\PYG{n}{forceUpdate}\PYG{p}{();}
+  \PYG{p}{\PYGZcb{}}
+  \PYG{n}{String} \PYG{n}{date} \PYG{o}{=} \PYG{n}{timeClient}\PYG{p}{.}\PYG{n}{getFormattedDate}\PYG{p}{();}
+  \PYG{n}{date}\PYG{p}{.}\PYG{n}{replace}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}Z\PYGZdq{}}\PYG{p}{,} \PYG{l+s}{\PYGZdq{}+05:30\PYGZdq{}}\PYG{p}{);}
+  \PYG{n}{date}\PYG{p}{.}\PYG{n}{toCharArray}\PYG{p}{(}\PYG{n}{formattedDate}\PYG{p}{,} \PYG{n}{TIMESTAMP\PYGZus{}SIZE}\PYG{p}{);}
+  \PYG{n}{Serial}\PYG{p}{.}\PYG{n}{printf}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}[NTP] Retrieved timestamp: \PYGZpc{}s}\PYG{l+s+se}{\PYGZbs{}n}\PYG{l+s}{\PYGZdq{}}\PYG{p}{,} \PYG{n}{formattedDate}\PYG{p}{);}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

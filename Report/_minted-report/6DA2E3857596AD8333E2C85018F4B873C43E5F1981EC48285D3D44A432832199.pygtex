@@ -1,0 +1,11 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+cp}{\PYGZsh{}ifndef STATISTIC\PYGZus{}H}
+\PYG{c+cp}{\PYGZsh{}define STATISTIC\PYGZus{}H}
+
+\PYG{k}{struct} \PYG{n+nc}{statistic} \PYG{p}{\PYGZob{}}
+  \PYG{k+kt}{float} \PYG{n}{mean}\PYG{p}{;}
+  \PYG{k+kt}{float} \PYG{n}{std}\PYG{p}{;}
+\PYG{p}{\PYGZcb{};}
+
+\PYG{c+cp}{\PYGZsh{}endif}
+\end{Verbatim}

@@ -1,0 +1,56 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kn}{from} \PYG{n+nn}{db.database} \PYG{k+kn}{import} \PYG{n}{get\PYGZus{}db}
+\PYG{k+kn}{from} \PYG{n+nn}{datetime} \PYG{k+kn}{import} \PYG{n}{datetime}
+
+
+\PYG{k}{def} \PYG{n+nf}{get\PYGZus{}all\PYGZus{}entries}\PYG{p}{():}
+    \PYG{n}{c} \PYG{o}{=} \PYG{n}{get\PYGZus{}db}\PYG{p}{()}\PYG{o}{.}\PYG{n}{cursor}\PYG{p}{()}
+    \PYG{n}{c}\PYG{o}{.}\PYG{n}{execute}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}\PYGZdq{}\PYGZdq{}}
+\PYG{l+s+s2}{    select identifier, CAST(sent as TEXT) as sent,}
+\PYG{l+s+s2}{               info\PYGZus{}parameter\PYGZus{}temp\PYGZus{}mean, info\PYGZus{}parameter\PYGZus{}temp\PYGZus{}std, }
+\PYG{l+s+s2}{               info\PYGZus{}parameter\PYGZus{}humidity\PYGZus{}mean, info\PYGZus{}parameter\PYGZus{}humidity\PYGZus{}std,}
+\PYG{l+s+s2}{               info\PYGZus{}parameter\PYGZus{}pressure\PYGZus{}mean, info\PYGZus{}parameter\PYGZus{}pressure\PYGZus{}std, }
+\PYG{l+s+s2}{               info\PYGZus{}parameter\PYGZus{}light\PYGZus{}mean, info\PYGZus{}parameter\PYGZus{}light\PYGZus{}std }
+\PYG{l+s+s2}{    from entry order by sent;}
+\PYG{l+s+s2}{    \PYGZdq{}\PYGZdq{}\PYGZdq{}}\PYG{p}{)}
+    \PYG{k}{return} \PYG{n}{c}\PYG{o}{.}\PYG{n}{fetchall}\PYG{p}{()}
+
+
+\PYG{k}{def} \PYG{n+nf}{save\PYGZus{}entry}\PYG{p}{(}\PYG{n}{cap}\PYG{p}{,} \PYG{n}{params}\PYG{p}{):}
+    \PYG{n}{conn} \PYG{o}{=} \PYG{n}{get\PYGZus{}db}\PYG{p}{()}
+    \PYG{n}{c} \PYG{o}{=} \PYG{n}{conn}\PYG{o}{.}\PYG{n}{cursor}\PYG{p}{()}
+    \PYG{n}{c}\PYG{o}{.}\PYG{n}{execute}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}\PYGZdq{}\PYGZdq{}}
+\PYG{l+s+s2}{        INSERT INTO entry (identifier, sender, sent, status, msgType, scope, }
+\PYG{l+s+s2}{                       info\PYGZus{}category, info\PYGZus{}event, info\PYGZus{}responseType,}
+\PYG{l+s+s2}{                       info\PYGZus{}urgency, info\PYGZus{}severity, info\PYGZus{}certainty, info\PYGZus{}senderName, }
+\PYG{l+s+s2}{                       info\PYGZus{}parameter\PYGZus{}temp\PYGZus{}mean,  info\PYGZus{}parameter\PYGZus{}temp\PYGZus{}std, }
+\PYG{l+s+s2}{                       info\PYGZus{}parameter\PYGZus{}humidity\PYGZus{}mean, info\PYGZus{}parameter\PYGZus{}humidity\PYGZus{}std,}
+\PYG{l+s+s2}{                       info\PYGZus{}parameter\PYGZus{}pressure\PYGZus{}mean, info\PYGZus{}parameter\PYGZus{}pressure\PYGZus{}std, }
+\PYG{l+s+s2}{                       info\PYGZus{}parameter\PYGZus{}light\PYGZus{}mean, info\PYGZus{}parameter\PYGZus{}light\PYGZus{}std)}
+\PYG{l+s+s2}{        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);}
+\PYG{l+s+s2}{    \PYGZdq{}\PYGZdq{}\PYGZdq{}}\PYG{p}{,}
+              \PYG{p}{(}
+                  \PYG{n+nb}{str}\PYG{p}{(}\PYG{n}{cap}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}cap\PYGZus{}id\PYGZsq{}}\PYG{p}{]),}
+                  \PYG{n+nb}{str}\PYG{p}{(}\PYG{n}{cap}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}cap\PYGZus{}sender\PYGZsq{}}\PYG{p}{]),}
+                  \PYG{n}{datetime}\PYG{o}{.}\PYG{n}{fromisoformat}\PYG{p}{(}\PYG{n+nb}{str}\PYG{p}{(}\PYG{n}{cap}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}cap\PYGZus{}sent\PYGZsq{}}\PYG{p}{])),}
+                  \PYG{n+nb}{str}\PYG{p}{(}\PYG{n}{cap}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}cap\PYGZus{}status\PYGZsq{}}\PYG{p}{]),}
+                  \PYG{n+nb}{str}\PYG{p}{(}\PYG{n}{cap}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}cap\PYGZus{}message\PYGZus{}type\PYGZsq{}}\PYG{p}{]),}
+                  \PYG{n+nb}{str}\PYG{p}{(}\PYG{n}{cap}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}cap\PYGZus{}scope\PYGZsq{}}\PYG{p}{]),}
+                  \PYG{n+nb}{str}\PYG{p}{(}\PYG{n}{cap}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}cap\PYGZus{}info\PYGZsq{}}\PYG{p}{][}\PYG{l+m+mi}{0}\PYG{p}{][}\PYG{l+s+s1}{\PYGZsq{}cap\PYGZus{}category\PYGZsq{}}\PYG{p}{]),}
+                  \PYG{n+nb}{str}\PYG{p}{(}\PYG{n}{cap}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}cap\PYGZus{}info\PYGZsq{}}\PYG{p}{][}\PYG{l+m+mi}{0}\PYG{p}{][}\PYG{l+s+s1}{\PYGZsq{}cap\PYGZus{}event\PYGZsq{}}\PYG{p}{]),}
+                  \PYG{n+nb}{str}\PYG{p}{(}\PYG{n}{cap}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}cap\PYGZus{}info\PYGZsq{}}\PYG{p}{][}\PYG{l+m+mi}{0}\PYG{p}{][}\PYG{l+s+s1}{\PYGZsq{}cap\PYGZus{}response\PYGZus{}type\PYGZsq{}}\PYG{p}{]),}
+                  \PYG{n+nb}{str}\PYG{p}{(}\PYG{n}{cap}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}cap\PYGZus{}info\PYGZsq{}}\PYG{p}{][}\PYG{l+m+mi}{0}\PYG{p}{][}\PYG{l+s+s1}{\PYGZsq{}cap\PYGZus{}urgency\PYGZsq{}}\PYG{p}{]),}
+                  \PYG{n+nb}{str}\PYG{p}{(}\PYG{n}{cap}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}cap\PYGZus{}info\PYGZsq{}}\PYG{p}{][}\PYG{l+m+mi}{0}\PYG{p}{][}\PYG{l+s+s1}{\PYGZsq{}cap\PYGZus{}severity\PYGZsq{}}\PYG{p}{]),}
+                  \PYG{n+nb}{str}\PYG{p}{(}\PYG{n}{cap}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}cap\PYGZus{}info\PYGZsq{}}\PYG{p}{][}\PYG{l+m+mi}{0}\PYG{p}{][}\PYG{l+s+s1}{\PYGZsq{}cap\PYGZus{}certainty\PYGZsq{}}\PYG{p}{]),}
+                  \PYG{n+nb}{str}\PYG{p}{(}\PYG{n}{cap}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}cap\PYGZus{}info\PYGZsq{}}\PYG{p}{][}\PYG{l+m+mi}{0}\PYG{p}{][}\PYG{l+s+s1}{\PYGZsq{}cap\PYGZus{}sender\PYGZus{}name\PYGZsq{}}\PYG{p}{]),}
+                  \PYG{n+nb}{float}\PYG{p}{(}\PYG{n}{params}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}TEMP\PYGZus{}MEAN\PYGZsq{}}\PYG{p}{]),}
+                  \PYG{n+nb}{float}\PYG{p}{(}\PYG{n}{params}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}TEMP\PYGZus{}STD\PYGZsq{}}\PYG{p}{]),}
+                  \PYG{n+nb}{float}\PYG{p}{(}\PYG{n}{params}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}HUMIDITY\PYGZus{}MEAN\PYGZsq{}}\PYG{p}{]),}
+                  \PYG{n+nb}{float}\PYG{p}{(}\PYG{n}{params}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}HUMIDITY\PYGZus{}STD\PYGZsq{}}\PYG{p}{]),}
+                  \PYG{n+nb}{float}\PYG{p}{(}\PYG{n}{params}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}PRESSURE\PYGZus{}MEAN\PYGZsq{}}\PYG{p}{]),}
+                  \PYG{n+nb}{float}\PYG{p}{(}\PYG{n}{params}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}PRESSURE\PYGZus{}STD\PYGZsq{}}\PYG{p}{]),}
+                  \PYG{n+nb}{float}\PYG{p}{(}\PYG{n}{params}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}LIGHT\PYGZus{}MEAN\PYGZsq{}}\PYG{p}{]),}
+                  \PYG{n+nb}{float}\PYG{p}{(}\PYG{n}{params}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}LIGHT\PYGZus{}STD\PYGZsq{}}\PYG{p}{]),}
+              \PYG{p}{))}
+    \PYG{n}{conn}\PYG{o}{.}\PYG{n}{commit}\PYG{p}{()}
+\end{Verbatim}

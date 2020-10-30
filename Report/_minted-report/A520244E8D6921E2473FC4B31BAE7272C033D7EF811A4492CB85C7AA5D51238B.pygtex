@@ -1,0 +1,9 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+cp}{\PYGZsh{}ifndef WIFI\PYGZus{}CONFIG\PYGZus{}H}
+\PYG{c+cp}{\PYGZsh{}define WIFI\PYGZus{}CONFIG\PYGZus{}H}
+
+\PYG{k}{extern} \PYG{k}{const} \PYG{k+kt}{char}\PYG{o}{*} \PYG{n}{SSID}\PYG{p}{;}
+\PYG{k}{extern} \PYG{k}{const} \PYG{k+kt}{char}\PYG{o}{*} \PYG{n}{PASSWORD}\PYG{p}{;}
+
+\PYG{c+cp}{\PYGZsh{}endif}
+\end{Verbatim}

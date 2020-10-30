@@ -1,0 +1,9 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+cp}{\PYGZsh{}ifndef UTILS\PYGZus{}H}
+\PYG{c+cp}{\PYGZsh{}define UTILS\PYGZus{}H}
+
+\PYG{k+kt}{float} \PYG{n+nf}{mean}\PYG{p}{(}\PYG{k+kt}{float}\PYG{o}{*} \PYG{n}{buffer}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{size}\PYG{p}{);}
+\PYG{k+kt}{float} \PYG{n+nf}{standardDeviation}\PYG{p}{(}\PYG{k+kt}{float}\PYG{o}{*} \PYG{n}{buffer}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{size}\PYG{p}{,} \PYG{k+kt}{float} \PYG{n}{mean}\PYG{p}{);}
+
+\PYG{c+cp}{\PYGZsh{}endif}
+\end{Verbatim}

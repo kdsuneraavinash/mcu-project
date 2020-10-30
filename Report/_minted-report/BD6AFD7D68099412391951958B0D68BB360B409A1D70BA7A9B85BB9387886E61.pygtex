@@ -1,0 +1,34 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+cp}{\PYGZsh{}include} \PYG{c+cpf}{\PYGZlt{}Adafruit\PYGZus{}Sensor.h\PYGZgt{}}
+\PYG{c+cp}{\PYGZsh{}include} \PYG{c+cpf}{\PYGZlt{}Arduino.h\PYGZgt{}}
+\PYG{c+cp}{\PYGZsh{}include} \PYG{c+cpf}{\PYGZlt{}DHT.h\PYGZgt{}}
+
+\PYG{c+cp}{\PYGZsh{}define DHTPIN 4}
+\PYG{c+cp}{\PYGZsh{}define DHTTYPE DHT11}
+
+\PYG{n}{DHT} \PYG{n+nf}{dht}\PYG{p}{(}\PYG{n}{DHTPIN}\PYG{p}{,} \PYG{n}{DHTTYPE}\PYG{p}{);}
+
+\PYG{k+kt}{void} \PYG{n+nf}{initializeDHT}\PYG{p}{()} \PYG{p}{\PYGZob{}} \PYG{n}{dht}\PYG{p}{.}\PYG{n}{begin}\PYG{p}{();} \PYG{p}{\PYGZcb{}}
+
+\PYG{k+kt}{float} \PYG{n+nf}{readHumidity}\PYG{p}{()} \PYG{p}{\PYGZob{}}
+  \PYG{k+kt}{float} \PYG{n}{humidity} \PYG{o}{=} \PYG{n}{dht}\PYG{p}{.}\PYG{n}{readHumidity}\PYG{p}{();}
+  \PYG{k}{if} \PYG{p}{(}\PYG{n}{isnan}\PYG{p}{(}\PYG{n}{humidity}\PYG{p}{))} \PYG{p}{\PYGZob{}}
+    \PYG{n}{Serial}\PYG{p}{.}\PYG{n}{println}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}[DHT] Failed to read humidity from DHT sensor.\PYGZdq{}}\PYG{p}{);}
+    \PYG{k}{return} \PYG{l+m+mi}{\PYGZhy{}1}\PYG{p}{;}
+  \PYG{p}{\PYGZcb{}}
+
+  \PYG{n}{Serial}\PYG{p}{.}\PYG{n}{printf}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}[DHT] Humidity read: \PYGZpc{}f}\PYG{l+s+se}{\PYGZbs{}n}\PYG{l+s}{\PYGZdq{}}\PYG{p}{,} \PYG{n}{humidity}\PYG{p}{);}
+  \PYG{k}{return} \PYG{n}{humidity}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{k+kt}{float} \PYG{n+nf}{readTemperature}\PYG{p}{()} \PYG{p}{\PYGZob{}}
+  \PYG{k+kt}{float} \PYG{n}{temperature} \PYG{o}{=} \PYG{n}{dht}\PYG{p}{.}\PYG{n}{readTemperature}\PYG{p}{();}
+  \PYG{k}{if} \PYG{p}{(}\PYG{n}{isnan}\PYG{p}{(}\PYG{n}{temperature}\PYG{p}{))} \PYG{p}{\PYGZob{}}
+    \PYG{n}{Serial}\PYG{p}{.}\PYG{n}{println}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}[DHT] Failed to read temperature from DHT sensor.\PYGZdq{}}\PYG{p}{);}
+    \PYG{k}{return} \PYG{l+m+mi}{\PYGZhy{}1}\PYG{p}{;}
+  \PYG{p}{\PYGZcb{}}
+
+  \PYG{n}{Serial}\PYG{p}{.}\PYG{n}{printf}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}[DHT] Temperature read: \PYGZpc{}f}\PYG{l+s+se}{\PYGZbs{}n}\PYG{l+s}{\PYGZdq{}}\PYG{p}{,} \PYG{n}{temperature}\PYG{p}{);}
+  \PYG{k}{return} \PYG{n}{temperature}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

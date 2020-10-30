@@ -1,0 +1,15 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+cp}{\PYGZsh{}ifndef NTP\PYGZus{}H}
+\PYG{c+cp}{\PYGZsh{}define NTP\PYGZus{}H}
+
+\PYG{c+cp}{\PYGZsh{}include} \PYG{c+cpf}{\PYGZlt{}WString.h\PYGZgt{}}
+
+\PYG{k}{extern} \PYG{n}{String} \PYG{n}{formattedDate}\PYG{p}{;}
+\PYG{k}{extern} \PYG{n}{String} \PYG{n}{dayStamp}\PYG{p}{;}
+\PYG{k}{extern} \PYG{n}{String} \PYG{n}{timeStamp}\PYG{p}{;}
+
+\PYG{k+kt}{void} \PYG{n+nf}{initializeNtp}\PYG{p}{();}
+\PYG{k+kt}{void} \PYG{n+nf}{updateTime}\PYG{p}{();}
+
+\PYG{c+cp}{\PYGZsh{}endif}
+\end{Verbatim}

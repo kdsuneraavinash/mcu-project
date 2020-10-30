@@ -1,0 +1,23 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+cp}{\PYGZsh{}include} \PYG{c+cpf}{\PYGZlt{}Adafruit\PYGZus{}BMP085.h\PYGZgt{}}
+\PYG{c+cp}{\PYGZsh{}include} \PYG{c+cpf}{\PYGZlt{}Wire.h\PYGZgt{}}
+
+\PYG{n}{Adafruit\PYGZus{}BMP085} \PYG{n}{bmp}\PYG{p}{;}
+
+\PYG{k+kt}{void} \PYG{n+nf}{initializeBMP}\PYG{p}{()} \PYG{p}{\PYGZob{}}
+  \PYG{k}{if} \PYG{p}{(}\PYG{o}{!}\PYG{n}{bmp}\PYG{p}{.}\PYG{n}{begin}\PYG{p}{())} \PYG{p}{\PYGZob{}}
+    \PYG{n}{Serial}\PYG{p}{.}\PYG{n}{println}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}[BMP] Could not find a valid BMP180 sensor.\PYGZdq{}}\PYG{p}{);}
+  \PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{k+kt}{float} \PYG{n+nf}{readPressure}\PYG{p}{()} \PYG{p}{\PYGZob{}}
+  \PYG{k}{if} \PYG{p}{(}\PYG{o}{!}\PYG{n}{bmp}\PYG{p}{.}\PYG{n}{begin}\PYG{p}{())} \PYG{p}{\PYGZob{}}
+    \PYG{n}{Serial}\PYG{p}{.}\PYG{n}{println}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}[DHT] Failed to read pressure from BMP sensor.\PYGZdq{}}\PYG{p}{);}
+    \PYG{k}{return} \PYG{l+m+mi}{\PYGZhy{}1}\PYG{p}{;}
+  \PYG{p}{\PYGZcb{}}
+
+  \PYG{k+kt}{float} \PYG{n}{pressure} \PYG{o}{=} \PYG{n}{bmp}\PYG{p}{.}\PYG{n}{readPressure}\PYG{p}{();}
+  \PYG{n}{Serial}\PYG{p}{.}\PYG{n}{printf}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}[BMP] Pressure read: \PYGZpc{}f}\PYG{l+s+se}{\PYGZbs{}n}\PYG{l+s}{\PYGZdq{}}\PYG{p}{,} \PYG{n}{pressure}\PYG{p}{);}
+  \PYG{k}{return} \PYG{n}{pressure}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

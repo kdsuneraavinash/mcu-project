@@ -1,0 +1,14 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+cp}{\PYGZsh{}ifndef CONFIG\PYGZus{}H}
+\PYG{c+cp}{\PYGZsh{}define CONFIG\PYGZus{}H}
+
+\PYG{c+cp}{\PYGZsh{}include} \PYG{c+cpf}{\PYGZlt{}cppQueue.h\PYGZgt{}}
+
+\PYG{c+cp}{\PYGZsh{}include} \PYG{c+cpf}{\PYGZdq{}config.h\PYGZdq{}}
+
+\PYG{k+kt}{void} \PYG{n+nf}{initializeConnection}\PYG{p}{();}
+\PYG{k+kt}{bool} \PYG{n+nf}{sendPostRequest}\PYG{p}{(}\PYG{k+kt}{char}\PYG{o}{*} \PYG{n}{message}\PYG{p}{,} \PYG{k+kt}{char}\PYG{o}{*} \PYG{n}{endpoint}\PYG{p}{);}
+\PYG{k+kt}{void} \PYG{n+nf}{processCapQueue}\PYG{p}{(}\PYG{n}{Queue}\PYG{o}{*} \PYG{n}{capCache}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{capSize}\PYG{p}{,} \PYG{k+kt}{char}\PYG{o}{*} \PYG{n}{endpoint}\PYG{p}{);}
+
+\PYG{c+cp}{\PYGZsh{}endif}
+\end{Verbatim}

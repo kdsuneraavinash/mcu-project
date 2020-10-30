@@ -1,0 +1,11 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+cp}{\PYGZsh{}ifndef SENSOR\PYGZus{}H}
+\PYG{c+cp}{\PYGZsh{}define SENSOR\PYGZus{}H}
+
+\PYG{k+kt}{float} \PYG{n+nf}{sampleTemperature}\PYG{p}{();}
+\PYG{k+kt}{float} \PYG{n+nf}{sampleHumidity}\PYG{p}{();}
+\PYG{k+kt}{float} \PYG{n+nf}{samplePressure}\PYG{p}{();}
+\PYG{k+kt}{float} \PYG{n+nf}{sampleLight}\PYG{p}{();}
+
+\PYG{c+cp}{\PYGZsh{}endif}
+\end{Verbatim}

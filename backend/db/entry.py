@@ -5,7 +5,8 @@ from datetime import datetime
 def get_all_entries():
     c = get_db().cursor()
     c.execute("""
-    select identifier, CAST(sent as TEXT) as sent, info_parameter_temp_mean,  info_parameter_temp_std, 
+    select identifier, CAST(sent as TEXT) as sent,
+               info_parameter_temp_mean, info_parameter_temp_std, 
                info_parameter_humidity_mean, info_parameter_humidity_std,
                info_parameter_pressure_mean, info_parameter_pressure_std, 
                info_parameter_light_mean, info_parameter_light_std 

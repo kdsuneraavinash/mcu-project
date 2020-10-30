@@ -1,0 +1,10 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+cp}{\PYGZsh{}ifndef DHT\PYGZus{}H}
+\PYG{c+cp}{\PYGZsh{}define DHT\PYGZus{}H}
+
+\PYG{k+kt}{void} \PYG{n+nf}{initializeDHT}\PYG{p}{();}
+\PYG{k+kt}{float} \PYG{n+nf}{readHumidity}\PYG{p}{();}
+\PYG{k+kt}{float} \PYG{n+nf}{readTemperature}\PYG{p}{();}
+
+\PYG{c+cp}{\PYGZsh{}endif}
+\end{Verbatim}

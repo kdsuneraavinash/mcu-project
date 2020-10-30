@@ -1,0 +1,85 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+cp}{\PYGZsh{}include} \PYG{c+cpf}{\PYGZlt{}Arduino.h\PYGZgt{}}
+\PYG{c+cp}{\PYGZsh{}include} \PYG{c+cpf}{\PYGZlt{}esp\PYGZus{}system.h\PYGZgt{}}
+\PYG{c+cp}{\PYGZsh{}include} \PYG{c+cpf}{\PYGZlt{}stdio.h\PYGZgt{}}
+
+\PYG{c+cp}{\PYGZsh{}include} \PYG{c+cpf}{\PYGZdq{}../wifi/ntp.h\PYGZdq{}}
+\PYG{c+cp}{\PYGZsh{}include} \PYG{c+cpf}{\PYGZdq{}statistic.h\PYGZdq{}}
+
+\PYG{c+cp}{\PYGZsh{}define IDENTIFIER\PYGZus{}LENGTH 32}
+
+\PYG{k}{const} \PYG{k+kt}{char}\PYG{o}{*} \PYG{n}{CAP\PYGZus{}TEMPLATE} \PYG{o}{=}
+    \PYG{l+s}{\PYGZdq{}\PYGZlt{}?xml version = }\PYG{l+s+se}{\PYGZbs{}\PYGZdq{}}\PYG{l+s}{1.0}\PYG{l+s+se}{\PYGZbs{}\PYGZdq{}}\PYG{l+s}{ encoding = }\PYG{l+s+se}{\PYGZbs{}\PYGZdq{}}\PYG{l+s}{UTF\PYGZhy{}8}\PYG{l+s+se}{\PYGZbs{}\PYGZdq{}}\PYG{l+s}{?\PYGZgt{}\PYGZdq{}}
+    \PYG{l+s}{\PYGZdq{}\PYGZlt{}alert xmlns = }\PYG{l+s+se}{\PYGZbs{}\PYGZdq{}}\PYG{l+s}{urn:oasis:names:tc:emergency:cap:1.2}\PYG{l+s+se}{\PYGZbs{}\PYGZdq{}}\PYG{l+s}{\PYGZgt{}\PYGZdq{}}
+    \PYG{l+s}{\PYGZdq{}   \PYGZlt{}identifier\PYGZgt{}\PYGZpc{}s\PYGZhy{}\PYGZpc{}d\PYGZlt{}/identifier\PYGZgt{}\PYGZdq{}}
+    \PYG{l+s}{\PYGZdq{}   \PYGZlt{}sender\PYGZgt{}MCU\PYGZus{}DEVICE\PYGZlt{}/sender\PYGZgt{}\PYGZdq{}}
+    \PYG{l+s}{\PYGZdq{}   \PYGZlt{}sent\PYGZgt{}\PYGZpc{}s\PYGZlt{}/sent\PYGZgt{}\PYGZdq{}}
+    \PYG{l+s}{\PYGZdq{}   \PYGZlt{}status\PYGZgt{}Actual\PYGZlt{}/status\PYGZgt{}\PYGZdq{}}
+    \PYG{l+s}{\PYGZdq{}   \PYGZlt{}msgType\PYGZgt{}Alert\PYGZlt{}/msgType\PYGZgt{}\PYGZdq{}}
+    \PYG{l+s}{\PYGZdq{}   \PYGZlt{}scope\PYGZgt{}Private\PYGZlt{}/scope\PYGZgt{}\PYGZdq{}}
+    \PYG{l+s}{\PYGZdq{}   \PYGZlt{}info\PYGZgt{}\PYGZdq{}}
+    \PYG{l+s}{\PYGZdq{}       \PYGZlt{}category\PYGZgt{}Env\PYGZlt{}/category\PYGZgt{}\PYGZdq{}}
+    \PYG{l+s}{\PYGZdq{}       \PYGZlt{}event\PYGZgt{}SENSOR\PYGZus{}DATA\PYGZlt{}/event\PYGZgt{}\PYGZdq{}}
+    \PYG{l+s}{\PYGZdq{}       \PYGZlt{}responseType\PYGZgt{}None\PYGZlt{}/responseType\PYGZgt{} \PYGZdq{}}
+    \PYG{l+s}{\PYGZdq{}       \PYGZlt{}urgency\PYGZgt{}Unknown\PYGZlt{}/urgency\PYGZgt{}\PYGZdq{}}
+    \PYG{l+s}{\PYGZdq{}       \PYGZlt{}severity\PYGZgt{}Minor\PYGZlt{}/severity\PYGZgt{}\PYGZdq{}}
+    \PYG{l+s}{\PYGZdq{}       \PYGZlt{}certainty\PYGZgt{}Observed\PYGZlt{}/certainty\PYGZgt{}\PYGZdq{}}
+    \PYG{l+s}{\PYGZdq{}       \PYGZlt{}senderName\PYGZgt{}mcu\PYGZus{}session\PYGZus{}\PYGZpc{}s\PYGZlt{}/senderName\PYGZgt{}\PYGZdq{}}
+    \PYG{l+s}{\PYGZdq{}       \PYGZlt{}parameter\PYGZgt{}\PYGZdq{}}
+    \PYG{l+s}{\PYGZdq{}           \PYGZlt{}valueName\PYGZgt{}TEMP\PYGZus{}MEAN\PYGZlt{}/valueName\PYGZgt{}\PYGZdq{}}
+    \PYG{l+s}{\PYGZdq{}           \PYGZlt{}value\PYGZgt{}\PYGZpc{}f\PYGZlt{}/value\PYGZgt{}\PYGZdq{}}
+    \PYG{l+s}{\PYGZdq{}       \PYGZlt{}/parameter\PYGZgt{}\PYGZdq{}}
+    \PYG{l+s}{\PYGZdq{}       \PYGZlt{}parameter\PYGZgt{}\PYGZdq{}}
+    \PYG{l+s}{\PYGZdq{}           \PYGZlt{}valueName\PYGZgt{}TEMP\PYGZus{}STD\PYGZlt{}/valueName\PYGZgt{}\PYGZdq{}}
+    \PYG{l+s}{\PYGZdq{}           \PYGZlt{}value\PYGZgt{}\PYGZpc{}f\PYGZlt{}/value\PYGZgt{}\PYGZdq{}}
+    \PYG{l+s}{\PYGZdq{}       \PYGZlt{}/parameter\PYGZgt{}\PYGZdq{}}
+    \PYG{l+s}{\PYGZdq{}       \PYGZlt{}parameter\PYGZgt{}\PYGZdq{}}
+    \PYG{l+s}{\PYGZdq{}           \PYGZlt{}valueName\PYGZgt{}HUMIDITY\PYGZus{}MEAN\PYGZlt{}/valueName\PYGZgt{}\PYGZdq{}}
+    \PYG{l+s}{\PYGZdq{}           \PYGZlt{}value\PYGZgt{}\PYGZpc{}f\PYGZlt{}/value\PYGZgt{}\PYGZdq{}}
+    \PYG{l+s}{\PYGZdq{}       \PYGZlt{}/parameter\PYGZgt{}\PYGZdq{}}
+    \PYG{l+s}{\PYGZdq{}       \PYGZlt{}parameter\PYGZgt{}\PYGZdq{}}
+    \PYG{l+s}{\PYGZdq{}           \PYGZlt{}valueName\PYGZgt{}HUMIDITY\PYGZus{}STD\PYGZlt{}/valueName\PYGZgt{}\PYGZdq{}}
+    \PYG{l+s}{\PYGZdq{}           \PYGZlt{}value\PYGZgt{}\PYGZpc{}f\PYGZlt{}/value\PYGZgt{}\PYGZdq{}}
+    \PYG{l+s}{\PYGZdq{}       \PYGZlt{}/parameter\PYGZgt{}\PYGZdq{}}
+    \PYG{l+s}{\PYGZdq{}       \PYGZlt{}parameter\PYGZgt{}\PYGZdq{}}
+    \PYG{l+s}{\PYGZdq{}           \PYGZlt{}valueName\PYGZgt{}PRESSURE\PYGZus{}MEAN\PYGZlt{}/valueName\PYGZgt{}\PYGZdq{}}
+    \PYG{l+s}{\PYGZdq{}           \PYGZlt{}value\PYGZgt{}\PYGZpc{}f\PYGZlt{}/value\PYGZgt{}\PYGZdq{}}
+    \PYG{l+s}{\PYGZdq{}       \PYGZlt{}/parameter\PYGZgt{}\PYGZdq{}}
+    \PYG{l+s}{\PYGZdq{}       \PYGZlt{}parameter\PYGZgt{}\PYGZdq{}}
+    \PYG{l+s}{\PYGZdq{}           \PYGZlt{}valueName\PYGZgt{}PRESSURE\PYGZus{}STD\PYGZlt{}/valueName\PYGZgt{}\PYGZdq{}}
+    \PYG{l+s}{\PYGZdq{}           \PYGZlt{}value\PYGZgt{}\PYGZpc{}f\PYGZlt{}/value\PYGZgt{}\PYGZdq{}}
+    \PYG{l+s}{\PYGZdq{}       \PYGZlt{}/parameter\PYGZgt{}\PYGZdq{}}
+    \PYG{l+s}{\PYGZdq{}       \PYGZlt{}parameter\PYGZgt{}\PYGZdq{}}
+    \PYG{l+s}{\PYGZdq{}           \PYGZlt{}valueName\PYGZgt{}LIGHT\PYGZus{}MEAN\PYGZlt{}/valueName\PYGZgt{}\PYGZdq{}}
+    \PYG{l+s}{\PYGZdq{}           \PYGZlt{}value\PYGZgt{}\PYGZpc{}f\PYGZlt{}/value\PYGZgt{}\PYGZdq{}}
+    \PYG{l+s}{\PYGZdq{}       \PYGZlt{}/parameter\PYGZgt{}\PYGZdq{}}
+    \PYG{l+s}{\PYGZdq{}       \PYGZlt{}parameter\PYGZgt{}\PYGZdq{}}
+    \PYG{l+s}{\PYGZdq{}           \PYGZlt{}valueName\PYGZgt{}LIGHT\PYGZus{}STD\PYGZlt{}/valueName\PYGZgt{}\PYGZdq{}}
+    \PYG{l+s}{\PYGZdq{}           \PYGZlt{}value\PYGZgt{}\PYGZpc{}f\PYGZlt{}/value\PYGZgt{}\PYGZdq{}}
+    \PYG{l+s}{\PYGZdq{}       \PYGZlt{}/parameter\PYGZgt{}\PYGZdq{}}
+    \PYG{l+s}{\PYGZdq{}   \PYGZlt{}/info\PYGZgt{}\PYGZdq{}}
+    \PYG{l+s}{\PYGZdq{}\PYGZlt{}/alert\PYGZgt{}\PYGZdq{}}\PYG{p}{;}
+
+\PYG{k+kt}{int} \PYG{n}{currentIdentifier} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+\PYG{k+kt}{char} \PYG{n}{randomIdentifier}\PYG{p}{[}\PYG{n}{IDENTIFIER\PYGZus{}LENGTH} \PYG{o}{+} \PYG{l+m+mi}{1}\PYG{p}{];}
+
+\PYG{k+kt}{void} \PYG{n+nf}{setupIdentifier}\PYG{p}{()} \PYG{p}{\PYGZob{}}
+  \PYG{n}{randomSeed}\PYG{p}{(}\PYG{n}{analogRead}\PYG{p}{(}\PYG{l+m+mi}{0}\PYG{p}{));}
+  \PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZlt{}} \PYG{n}{IDENTIFIER\PYGZus{}LENGTH}\PYG{p}{;} \PYG{n}{i}\PYG{o}{++}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+    \PYG{n}{byte} \PYG{n}{randomValue} \PYG{o}{=} \PYG{n}{random}\PYG{p}{(}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{26}\PYG{p}{);}
+    \PYG{n}{randomIdentifier}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{=} \PYG{n}{randomValue} \PYG{o}{+} \PYG{l+s+sc}{\PYGZsq{}a\PYGZsq{}}\PYG{p}{;}
+  \PYG{p}{\PYGZcb{}}
+  \PYG{n}{Serial}\PYG{p}{.}\PYG{n}{printf}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}[CAP] Identifier: \PYGZpc{}s}\PYG{l+s+se}{\PYGZbs{}n}\PYG{l+s}{\PYGZdq{}}\PYG{p}{,} \PYG{n}{randomIdentifier}\PYG{p}{);}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{k+kt}{void} \PYG{n+nf}{generateCap}\PYG{p}{(}\PYG{k+kt}{char}\PYG{o}{*} \PYG{n}{buffer}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{buffer\PYGZus{}size}\PYG{p}{,} \PYG{n}{statistic} \PYG{n}{temp}\PYG{p}{,}
+                 \PYG{n}{statistic} \PYG{n}{humidity}\PYG{p}{,} \PYG{n}{statistic} \PYG{n}{pressure}\PYG{p}{,} \PYG{n}{statistic} \PYG{n}{light}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+  \PYG{n}{updateTime}\PYG{p}{();}
+
+  \PYG{n}{Serial}\PYG{p}{.}\PYG{n}{println}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}[CAP] Compiling protocol XML.\PYGZdq{}}\PYG{p}{);}
+  \PYG{n}{snprintf}\PYG{p}{(}\PYG{n}{buffer}\PYG{p}{,} \PYG{n}{buffer\PYGZus{}size}\PYG{p}{,} \PYG{n}{CAP\PYGZus{}TEMPLATE}\PYG{p}{,} \PYG{n}{randomIdentifier}\PYG{p}{,}
+           \PYG{n}{currentIdentifier}\PYG{o}{++}\PYG{p}{,} \PYG{n}{formattedDate}\PYG{p}{,} \PYG{n}{randomIdentifier}\PYG{p}{,} \PYG{n}{temp}\PYG{p}{.}\PYG{n}{mean}\PYG{p}{,}
+           \PYG{n}{temp}\PYG{p}{.}\PYG{n}{std}\PYG{p}{,} \PYG{n}{humidity}\PYG{p}{.}\PYG{n}{mean}\PYG{p}{,} \PYG{n}{humidity}\PYG{p}{.}\PYG{n}{std}\PYG{p}{,} \PYG{n}{pressure}\PYG{p}{.}\PYG{n}{mean}\PYG{p}{,} \PYG{n}{pressure}\PYG{p}{.}\PYG{n}{std}\PYG{p}{,}
+           \PYG{n}{light}\PYG{p}{.}\PYG{n}{mean}\PYG{p}{,} \PYG{n}{light}\PYG{p}{.}\PYG{n}{std}\PYG{p}{);}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}
