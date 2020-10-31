@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/Arch Linux) (preloaded format=pdflatex 2020.9.16)  31 OCT 2020 00:39
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/Arch Linux) (preloaded format=pdflatex 2020.9.16)  31 OCT 2020 03:22
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -661,33 +661,33 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has b
                    \relax 
 l.60 \newpage
               [1] [2]
-<./images/high-level-1.png, id=99, 482.80376pt x 181.67876pt>
+<./images/high-level-1.png, id=104, 482.80376pt x 181.67876pt>
 File: ./images/high-level-1.png Graphic file (type png)
 <use ./images/high-level-1.png>
 Package pdftex.def Info: ./images/high-level-1.png  used on input line 133.
 (pdftex.def)             Requested size: 294.42636pt x 110.79614pt.
-<./images/high-level-2.png, id=101, 1587.9325pt x 985.6825pt>
+<./images/high-level-2.png, id=106, 1367.1075pt x 985.6825pt>
 File: ./images/high-level-2.png Graphic file (type png)
 <use ./images/high-level-2.png>
 Package pdftex.def Info: ./images/high-level-2.png  used on input line 143.
-(pdftex.def)             Requested size: 452.9679pt x 281.16307pt.
+(pdftex.def)             Requested size: 452.9679pt x 326.58473pt.
  [3 <./images/high-level-1.png> <./images/high-level-2.png>]
-<./images/nodemcu.jpg, id=110, 803.0pt x 803.0pt>
+<./images/nodemcu.jpg, id=115, 803.0pt x 803.0pt>
 File: ./images/nodemcu.jpg Graphic file (type jpg)
 <use ./images/nodemcu.jpg>
 Package pdftex.def Info: ./images/nodemcu.jpg  used on input line 164.
 (pdftex.def)             Requested size: 101.91708pt x 101.90634pt.
-<./images/bmp180.jpeg, id=111, 1003.75pt x 752.8125pt>
+<./images/bmp180.jpeg, id=116, 1003.75pt x 752.8125pt>
 File: ./images/bmp180.jpeg Graphic file (type jpg)
 <use ./images/bmp180.jpeg>
 Package pdftex.def Info: ./images/bmp180.jpeg  used on input line 168.
 (pdftex.def)             Requested size: 101.91708pt x 76.43436pt.
-<./images/dht11.jpg, id=112, 564.60938pt x 564.60938pt>
+<./images/dht11.jpg, id=117, 564.60938pt x 564.60938pt>
 File: ./images/dht11.jpg Graphic file (type jpg)
 <use ./images/dht11.jpg>
 Package pdftex.def Info: ./images/dht11.jpg  used on input line 172.
 (pdftex.def)             Requested size: 101.91708pt x 101.91821pt.
-<./images/ldr.jpeg, id=113, 225.84375pt x 225.84375pt>
+<./images/ldr.jpeg, id=118, 225.84375pt x 225.84375pt>
 File: ./images/ldr.jpeg Graphic file (type jpg)
 <use ./images/ldr.jpeg>
 Package pdftex.def Info: ./images/ldr.jpeg  used on input line 176.
@@ -695,29 +695,29 @@ Package pdftex.def Info: ./images/ldr.jpeg  used on input line 176.
  [4
 
  <./images/nodemcu.jpg> <./images/bmp180.jpeg> <./images/dht11.jpg> <./images/ldr.jpeg>]
-<./images/schematic.png, id=119, 222.431pt x 211.189pt>
+<./images/schematic.png, id=124, 222.431pt x 211.189pt>
 File: ./images/schematic.png Graphic file (type png)
 <use ./images/schematic.png>
 Package pdftex.def Info: ./images/schematic.png  used on input line 235.
 (pdftex.def)             Requested size: 430.31812pt x 408.61047pt.
-<./images/schematic_pcb.png, id=120, 186.296pt x 245.718pt>
+<./images/schematic_pcb.png, id=125, 186.296pt x 245.718pt>
 File: ./images/schematic_pcb.png Graphic file (type png)
 <use ./images/schematic_pcb.png>
 Package pdftex.def Info: ./images/schematic_pcb.png  used on input line 241.
 (pdftex.def)             Requested size: 452.9679pt x 597.49263pt.
  [5 <./images/schematic.png>] [6 <./images/schematic_pcb.png>]
-<./images/breadboard.png, id=134, 248.127pt x 231.264pt>
+<./images/breadboard.png, id=139, 248.127pt x 231.264pt>
 File: ./images/breadboard.png Graphic file (type png)
 <use ./images/breadboard.png>
 Package pdftex.def Info: ./images/breadboard.png  used on input line 275.
 (pdftex.def)             Requested size: 407.66833pt x 379.96352pt.
-<./images/device.jpg, id=135, 4111.36pt x 3083.52pt>
+<./images/device.jpg, id=140, 4111.36pt x 3083.52pt>
 File: ./images/device.jpg Graphic file (type jpg)
 <use ./images/device.jpg>
 Package pdftex.def Info: ./images/device.jpg  used on input line 282.
 (pdftex.def)             Requested size: 203.83417pt x 152.86761pt.
  [7 <./images/breadboard.png>]
-<./images/browser.png, id=142, 2026.57124pt x 1158.3275pt>
+<./images/browser.png, id=147, 2026.57124pt x 1158.3275pt>
 File: ./images/browser.png Graphic file (type png)
 <use ./images/browser.png>
 Package pdftex.def Info: ./images/browser.png  used on input line 304.
@@ -730,37 +730,37 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 LaTeX Font Info:    Trying to load font information for T1+pcr on input line 373.
  (/usr/share/texmf-dist/tex/latex/psnfss/t1pcr.fd
 File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
-) [9] (./_minted-report/default-pyg-prefix.pygstyle) (./_minted-report/default.pygstyle) (./_minted-report/3EE71594C4243AE93D0B922DCF48C27B7C9154905E9C79271AA6F1463B888F2D.pygtex
-LaTeX Font Info:    Trying to load font information for TS1+pcr on input line 13.
+) [9] (./_minted-report/default-pyg-prefix.pygstyle) (./_minted-report/default.pygstyle) (./_minted-report/51D3DADCF71169126D5B4583DEE05B52F413C79F4DD13404A4539C8D62837EC6.pygtex
+LaTeX Font Info:    Font shape `T1/pcr/m/it' in size <10> not available
+(Font)              Font shape `T1/pcr/m/sl' tried instead on input line 2.
+ [10
+
+]) [11] (./_minted-report/063EB5294BF1D250943D1FE95FCF6678278BE2F1599812389E4C03A7379B1B3F.pygtex) (./_minted-report/0BEC0F320B914D3F12EF421AE84E8DE909C7BACB87BDF74FAEEF668B6D62425D.pygtex) [12] (./_minted-report/911B2C660EBC021F758BF8BD37C4FCA40D3E1C3E066097115FE2DFDAB7EF0093.pygtex) (./_minted-report/6DA2E3857596AD8333E2C85018F4B873C43E5F1981EC48285D3D44A432832199.pygtex) (./_minted-report/0BEF34E56523D484A026CF2E8CB3EA09B186904DBD417E762699A0EF47987374.pygtex [13]
+LaTeX Font Info:    Trying to load font information for TS1+pcr on input line 70.
  (/usr/share/texmf-dist/tex/latex/psnfss/ts1pcr.fd
 File: ts1pcr.fd 2001/06/04 font definitions for TS1/pcr.
-)) [10
-
-] (./_minted-report/118E05F3998290E158808F2500D05BD2CD66C76D0DBBEB20386630FFFAE80A42.pygtex) [11] (./_minted-report/F1310ED637068973D7ACD1EF484932E4A15E5504D7B632D4778A391B875EB5C7.pygtex
-LaTeX Font Info:    Font shape `T1/pcr/m/it' in size <10> not available
-(Font)              Font shape `T1/pcr/m/sl' tried instead on input line 18.
-) [12] (./_minted-report/015EB3A008A2071A585F00E57270033DBD0ED199A98552610863EA6034397246.pygtex [13]) (./_minted-report/D48A1627CA279D21B49B86BD525B3A9E854BA0F80EF7F5DB054041CA50E1FE8B.pygtex [14]) [15] (./_minted-report/51D3DADCF71169126D5B4583DEE05B52F413C79F4DD13404A4539C8D62837EC6.pygtex [16]) [17] (./_minted-report/063EB5294BF1D250943D1FE95FCF6678278BE2F1599812389E4C03A7379B1B3F.pygtex) (./_minted-report/0BEC0F320B914D3F12EF421AE84E8DE909C7BACB87BDF74FAEEF668B6D62425D.pygtex) [18] (./_minted-report/911B2C660EBC021F758BF8BD37C4FCA40D3E1C3E066097115FE2DFDAB7EF0093.pygtex) (./_minted-report/6DA2E3857596AD8333E2C85018F4B873C43E5F1981EC48285D3D44A432832199.pygtex) (./_minted-report/0BEF34E56523D484A026CF2E8CB3EA09B186904DBD417E762699A0EF47987374.pygtex [19]) [20] (./_minted-report/16C1621819FA12C59CA1EC9D07C47F08AA7B5307745B9BED8754646A67F8A342.pygtex) (./_minted-report/630761984C53055E5433009C082156A4360B409A1D70BA7A9B85BB9387886E61.pygtex) [21] (./_minted-report/0C6FD04E735E8F5C10C68FE95D32789BCCE69979CCE4F0AF16E29224D9CC47BA.pygtex) (./_minted-report/D9B91E7DB256670BFAE1D99B813F80110EE984E89B869EB0270E35BF5D3E5847.pygtex) (./_minted-report/8A5410B038042717EE48BA421D0CDE339927001229CA45C85FBAB960BEEA16E1.pygtex) (./_minted-report/FF96515287BDD41A6B30B68FC2DD4168D2981B84A329A40A43A75D3578D04DB3.pygtex) [22] (./_minted-report/546A00B4DAE73728D9B86588C3E08BD5BA9323879AA773570ADD69ADDC2AC1B4.pygtex) (./_minted-report/239CF70C1D04BF3ABA8249DB604FF660C222BCC5C5BBED9979E8D4FE5E5823B7.pygtex) [23] (./_minted-report/A520244E8D6921E2473FC4B31BAE7272C033D7EF811A4492CB85C7AA5D51238B.pygtex) (./_minted-report/8C9E812AAB67BDA9F4C654F909B2BE73031CE0E07F50065FCEB0AA19511982EA.pygtex) (./_minted-report/ECFD2C813CE7E403669FF16B89A205470C3C7861868081190E10514847BFC01C.pygtex) [24] (./_minted-report/1FD745F68269A014EA4F3CBC3BFD4E78400B3FB22A7A305552F0CE566231AB54.pygtex [25]) (./_minted-report/CE9585E394AF9383C3799C165917964942B2B1E2DED3ED129791002B9E873298.pygtex) [26] [27]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 490.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 490.
+)) [14] (./_minted-report/16C1621819FA12C59CA1EC9D07C47F08AA7B5307745B9BED8754646A67F8A342.pygtex) (./_minted-report/630761984C53055E5433009C082156A4360B409A1D70BA7A9B85BB9387886E61.pygtex) [15] (./_minted-report/0C6FD04E735E8F5C10C68FE95D32789BCCE69979CCE4F0AF16E29224D9CC47BA.pygtex) (./_minted-report/D9B91E7DB256670BFAE1D99B813F80110EE984E89B869EB0270E35BF5D3E5847.pygtex) (./_minted-report/8A5410B038042717EE48BA421D0CDE339927001229CA45C85FBAB960BEEA16E1.pygtex) (./_minted-report/FF96515287BDD41A6B30B68FC2DD4168D2981B84A329A40A43A75D3578D04DB3.pygtex) [16] (./_minted-report/546A00B4DAE73728D9B86588C3E08BD5BA9323879AA773570ADD69ADDC2AC1B4.pygtex) (./_minted-report/239CF70C1D04BF3ABA8249DB604FF660C222BCC5C5BBED9979E8D4FE5E5823B7.pygtex) [17] (./_minted-report/A520244E8D6921E2473FC4B31BAE7272C033D7EF811A4492CB85C7AA5D51238B.pygtex) (./_minted-report/8C9E812AAB67BDA9F4C654F909B2BE73031CE0E07F50065FCEB0AA19511982EA.pygtex) (./_minted-report/ECFD2C813CE7E403669FF16B89A205470C3C7861868081190E10514847BFC01C.pygtex) [18] (./_minted-report/1FD745F68269A014EA4F3CBC3BFD4E78400B3FB22A7A305552F0CE566231AB54.pygtex [19]) (./_minted-report/CE9585E394AF9383C3799C165917964942B2B1E2DED3ED129791002B9E873298.pygtex) [20] (./_minted-report/3EE71594C4243AE93D0B922DCF48C27B7C9154905E9C79271AA6F1463B888F2D.pygtex) [21] (./_minted-report/118E05F3998290E158808F2500D05BD2CD66C76D0DBBEB20386630FFFAE80A42.pygtex) [22] (./_minted-report/F1310ED637068973D7ACD1EF484932E4A15E5504D7B632D4778A391B875EB5C7.pygtex) [23] (./_minted-report/015EB3A008A2071A585F00E57270033DBD0ED199A98552610863EA6034397246.pygtex [24]) [25] (./_minted-report/D48A1627CA279D21B49B86BD525B3A9E854BA0F80EF7F5DB054041CA50E1FE8B.pygtex) [26]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 494.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 494.
  (./report.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 490.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 490.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 494.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 494.
 Package rerunfilecheck Info: File `report.out' has not changed.
-(rerunfilecheck)             Checksum: 738EF7A1C9B449F7F34435BD4976EFCD;858.
+(rerunfilecheck)             Checksum: D98E39FA7F620730F854E86EA0EF7190;937.
  ) 
 Here is how much of TeX's memory you used:
- 21072 strings out of 480478
- 405107 string characters out of 5905959
- 702265 words of memory out of 5000000
+ 21070 strings out of 480478
+ 405089 string characters out of 5905959
+ 703724 words of memory out of 5000000
  36524 multiletter control sequences out of 15000+600000
  547431 words of font info for 54 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 60i,18n,60p,883b,627s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 60i,18n,60p,883b,635s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf-dist/fonts/enc/dvips/base/8r.enc}{/usr/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}{/usr/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}</usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfbx1000.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfbx1728.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfbx2488.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfcc1200.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfcc1728.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1440.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfti1000.pfb></usr/share/texmf-dist/fonts/type1/urw/courier/ucrb8a.pfb></usr/share/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/share/texmf-dist/fonts/type1/urw/courier/ucrro8a.pfb>
-Output written on report.pdf (28 pages, 7748797 bytes).
+Output written on report.pdf (27 pages, 7746473 bytes).
 PDF statistics:
- 314 PDF objects out of 1000 (max. 8388607)
- 248 compressed objects within 3 object streams
- 55 named destinations out of 1000 (max. 500000)
- 180 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 311 PDF objects out of 1000 (max. 8388607)
+ 246 compressed objects within 3 object streams
+ 53 named destinations out of 1000 (max. 500000)
+ 188 words of extra memory for PDF output out of 10000 (max. 10000000)
 

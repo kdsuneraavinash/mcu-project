@@ -419,24 +419,13 @@ This ensures that 2 devices can operate with the same server without any interfe
     {html}{#1}}
 \newcommand{\SqlCode}[1]{\inputminted
     [fontsize=\footnotesize,frame=lines,framerule=1pt,
-        label=REMOTE\_SERVER\StrGobbleLeft{#1}{10},framesep=10pt]
+        label=schema.sql,framesep=10pt]
     {sql}{#1}}
 \newcommand{\CppCode}[1]{\inputminted
     [fontsize=\footnotesize,frame=lines,framerule=1pt,
         label=FIRMWARE\StrGobbleLeft{#1}{11},framesep=10pt]
     {c++}{#1}}
 
-\subsection{Remote Server Source Code}
-
-\PythonCode{../backend/app.py}
-\newpage
-\PythonCode{../backend/db/entry.py}
-\newpage
-\PythonCode{../backend/db/database.py}
-\newpage
-\HtmlCode{../backend/templates/index.html}
-\SqlCode{../backend/db/schema.sql}
-\newpage
 
 
 \subsection{Firmware Source Code}
@@ -474,18 +463,33 @@ This ensures that 2 devices can operate with the same server without any interfe
 \newpage
 
 
+\subsection{Remote Server Source Code}
+
+\PythonCode{../backend/app.py}
+\newpage
+\PythonCode{../backend/db/entry.py}
+\newpage
+\PythonCode{../backend/db/database.py}
+\newpage
+\HtmlCode{../backend/templates/index.html}
+\newpage
+
+\subsection{Remote Server Database Schema}
+
+\SqlCode{../backend/db/schema.sql}
+\newpage
 
 % ======================================
 % References
 % ======================================
 
-\begin{thebibliography}{9}
+% \begin{thebibliography}{9}
 
-    \bibitem{bib:fritzing}
-    \url{https://fritzing.org/} - Fritzing tool was used to design the schematic diagrams of the prototype.
+%     \bibitem{bib:fritzing}
+%     \url{https://fritzing.org/} - Fritzing tool was used to design the schematic diagrams of the prototype.
 
 
-\end{thebibliography}
+% \end{thebibliography}
 
 \end{document}
 
